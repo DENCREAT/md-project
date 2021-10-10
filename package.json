@@ -1,0 +1,23 @@
+{
+  "name": "md-project",
+  "version": "1.0.0",
+  "description": "Project for Denis Mihajlovskij",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DENCREAT/md-project.git"
+  },
+  "keywords": [
+    "адвокат",
+    "юрист",
+    "михайловский"
+  ],
+  "author": "Denis Bochkov <dencreat@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DENCREAT/md-project/issues"
+  },
+  "homepage": "https://github.com/DENCREAT/md-project#readme"
+}
