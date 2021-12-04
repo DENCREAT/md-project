@@ -28,8 +28,16 @@
           </ul>
         </nav>
       </div>
-      <div class="footer__column">4</div>
-      <div class="footer__column">5</div>
+      <div class="footer__column footer__column_privacy">
+        <a href="#" class="footer__nav-link simple">Конфиденциальность и <br>безопасность</a>
+        <p class="footer__copyright">© «MIHAYLOVSKY», 2012 - 2021</p>
+      </div>
+      <div class="footer__column footer__column_contact">
+        <div class="footer__contact">
+          <a href="tel:+74956468088" class="footer__phone">+7 (495) 646 80 88</a>
+          <p class="footer__address">121170, г. Москва, ул. Неверовского,<br> д. 10, стр. 3А, офис 206<br>(м. Парк Победы)</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -136,6 +144,41 @@ export default Vue.extend({
       text-transform: initial;
       margin-bottom: 5px;
     }
+  }
+
+  &__column {
+    &_privacy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: 30px;
+    }
+  }
+
+  &__phone {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__copyright {
+    margin-bottom: 22px;
+    color: #9298AE;
+    font-size: 10px;
+  }
+
+  &__address {
+    margin-top: 28px;
+    color: var(--white-color);
+    text-align: right;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.43;
   }
 }
 

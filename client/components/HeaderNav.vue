@@ -77,6 +77,7 @@ export default Vue.extend({
 
     &__item-link {
       text-transform: uppercase;
+      white-space: nowrap;
     }
   }
 </style>

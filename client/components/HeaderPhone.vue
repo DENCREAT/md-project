@@ -20,6 +20,7 @@ export default {
     font-size: 15px;
     line-height: 18px;
     font-weight: var(--fw-bold);
+    white-space: nowrap;
   }
 
   .action {

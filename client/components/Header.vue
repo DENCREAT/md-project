@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="header">
     <div class="container inner">
-      <Logo :variant="logoTypes.GRAY"/>
+      <Logo :variant="logoTypes.GRAY" class="header__logo"/>
       <HeaderNav/>
-      <HeaderPhone/>
+      <HeaderPhone class="header__phone"/>
     </div>
   </div>
 </template>
@@ -29,5 +29,15 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .header {
+    &__logo {
+      margin-right: 30px;
+    }
+
+    &__phone {
+      margin-left: 30px;
+    }
   }
 </style>
