@@ -29,19 +29,18 @@
         </nav>
       </div>
       <div class="footer__column footer__column_privacy">
-        <a href="#" class="footer__nav-link simple">Конфиденциальность и <br>безопасность</a>
-        <p class="footer__copyright">© «MIHAYLOVSKY», 2012 - 2021</p>
+        <a href="#" class="footer__nav-link simple footer__privacy-link">Конфиденциальность и <br>безопасность</a>
+        <p class="footer__copyright">{{ copyright }}</p>
       </div>
       <div class="footer__column footer__column_contact">
         <div class="footer__contact">
-          <a href="tel:+74956468088" class="footer__phone">+7 (495) 646 80 88</a>
-          <p class="footer__address">121170, г. Москва, ул. Неверовского,<br> д. 10, стр. 3А, офис 206<br>(м. Парк Победы)</p>
+          <a href="tel:+79533435353" class="footer__phone">+7 (953) 343 53 53</a>
+          <p class="footer__address" v-html="address" />
         </div>
       </div>
     </div>
   </div>
 </template>
-
 
 <script lang="ts">
 import Vue from 'vue';
@@ -54,6 +53,8 @@ export default Vue.extend({
   data() {
     return {
       logoTypes: LogoTypes,
+      copyright: '© «MIHAYLOVSKY», 2012 - 2021',
+      address: '190005, г. Санкт - Петербург, Измайловский проспеет,<br>18д, офис 27 Н<br>(м. Технологический институт-1)',
       navItems: [
         {
           title: 'Главная страница',
@@ -68,7 +69,7 @@ export default Vue.extend({
           url: '/'
         },
         {
-          title: 'Успешные дела',
+          title: 'Успешные дела/процессы',
           url: '/'
         },
         {
@@ -86,27 +87,27 @@ export default Vue.extend({
       ] as NavigationItem[],
       addNavItems: [
         {
-          title: 'Сфера подряда',
+          title: 'В сфере денежных обязательств',
           url: '/'
         },
         {
-          title: 'Сфера недвижимости',
+          title: 'В сфере недвижимости',
           url: '/'
         },
         {
-          title: 'Сфера оказания услуг и торговли',
+          title: 'В сфере оказания услуг',
           url: '/'
         },
         {
-          title: 'Сфера гражданских и иных дел',
+          title: 'В сфере семейных правоотношений',
           url: '/'
         },
         {
-          title: 'Сфера банкротства',
+          title: 'В сфере защиты прав автовладельцев',
           url: '/'
         },
         {
-          title: 'Сфера денежных обязательств',
+          title: 'В сфере уголовных и иных дел',
           url: '/'
         },
       ] as NavigationItem[]
@@ -153,6 +154,10 @@ export default Vue.extend({
       justify-content: space-between;
       margin-right: 30px;
     }
+  }
+
+  &__privacy-link {
+    font-size: 11px;
   }
 
   &__phone {

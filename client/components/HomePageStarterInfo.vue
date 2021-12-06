@@ -3,7 +3,7 @@
     <div class="wrapper">
       <h1 class="title">{{ title }}</h1>
       <div class="description">{{ description }}</div>
-      <button class="btn btn--big">{{ btnText }}</button>
+      <button class="btn">{{ btnText }}</button>
       <div class="add-info">{{ addInfo }}</div>
       <div class="achievements">
         <HomePageAchievement

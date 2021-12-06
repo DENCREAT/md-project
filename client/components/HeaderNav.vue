@@ -61,7 +61,7 @@ export default Vue.extend({
       bottom: 0;
       height: 3px;
       border-radius: 1.5px;
-      background-color: var(--secandary-color);
+      background-color: var(--secondary-color);
     }
   }
 

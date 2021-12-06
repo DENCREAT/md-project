@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <a class="phone" href="tel:">+7 (495) 646·80·88</a>
+    <a class="phone" href="tel:+79533435353">+7 (953) 343 53 53</a>
     <a class="action" href="#">Заказать звонок</a>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
     margin-top: 2px;
     font-size: 14px;
     line-height: 18px;
-    color: var(--secandary-color);
+    color: var(--secondary-color);
     font-weight: var(--fw-bold);
   }
 </style>

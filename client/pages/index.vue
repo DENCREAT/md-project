@@ -5,14 +5,15 @@
         <div class="home-page__starter">
           <HomePageStarterInfo class="home-page__starter-info"/>
           <div class="home-page__starter-image">
-            <img src="~/assets/img/main-photo.png" alt="">
+<!--            <img src="~/assets/img/main-photo.png" alt="">-->
           </div>
         </div>
       </PageStarter>
     </template>
 
     <template #content>
-      Some Content
+      <Areas />
+      <AboutMe />
     </template>
 
   </MainLayout>
@@ -24,9 +25,11 @@ import PageStarter from "~/components/PageStarter.vue";
 import Header from "~/components/Header.vue";
 import HomePageStarterInfo from '~/components/HomePageStarterInfo.vue';
 import MainLayout from '~/components/MainLayout.vue';
+import AboutMe from '~/components/AboutMe.vue';
+import Areas from '~/components/Areas.vue';
 
 export default Vue.extend({
-  components: {MainLayout, HomePageStarterInfo, Header, PageStarter }
+  components: {Areas, AboutMe, MainLayout, HomePageStarterInfo, Header, PageStarter }
 })
 </script>
 
