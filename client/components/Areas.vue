@@ -1,59 +1,56 @@
 <template>
-  <section class="areas">
-    <div class="container">
-      <h2 class="areas__title">{{ title }}</h2>
-      <div class="areas__list">
-        <Area
-          v-for="item in areas"
-          :key="item.id"
-          :data="item"
-          class="areas__item" />
-      </div>
+  <SectionLightWrapper class="areas" :title="title">
+    <div class="areas__list">
+      <Area
+        v-for="item in areas"
+        :key="item.id"
+        :data="item"
+        class="areas__item" />
     </div>
-  </section>
+  </SectionLightWrapper>
 </template>
-
 
 <script>
 import Area from "./Area";
+import SectionLightWrapper from "~/components/SectionLightWrapper";
 export default {
-  components: {Area},
+  components: {SectionLightWrapper, Area},
   data() {
     return {
       title: 'Сферы практики',
       areas: [
         {
-          title: 'В сфере денежных обязательств',
+          title: 'Сфера дененежных обязательствв',
           url: '/',
           bgUrl: '/images/area.jpg',
           iconUrl: '/images/area-icon.svg'
         },
         {
-          title: 'В сфере недвижимости',
+          title: 'Сфера недвижимости',
           url: '/',
           bgUrl: '/images/area.jpg',
           iconUrl: '/images/area-icon.svg'
         },
         {
-          title: 'В сфере оказания услуг',
+          title: 'Сфера оказания услуг',
           url: '/',
           bgUrl: '/images/area.jpg',
           iconUrl: '/images/area-icon.svg'
         },
         {
-          title: 'В сфере семейных правоотношений',
+          title: 'Сфера семейных правоотношений',
           url: '/',
           bgUrl: '/images/area.jpg',
           iconUrl: '/images/area-icon.svg'
         },
         {
-          title: 'В сфере защиты прав автовладельцев',
+          title: 'Сфера защиты прав автовладельцев',
           url: '/',
           bgUrl: '/images/area.jpg',
           iconUrl: '/images/area-icon.svg'
         },
         {
-          title: 'В сфере уголовных и иных дел',
+          title: 'Сфера уголовных и иных дел',
           url: '/',
           bgUrl: '/images/area.jpg',
           iconUrl: '/images/area-icon.svg'
@@ -69,45 +66,6 @@ export default {
 @import "assets/styles/mixins/mq";
 
 .areas {
-  padding: 30px 0;
-
-  @include mq(desktop) {
-    padding-top: 70px;
-    padding-bottom: 160px;
-  }
-
-  &__title {
-    margin-bottom: 25px;
-    max-width: 420px;
-    font-size: 30px;
-    font-weight: var(--fw-bold);
-    color: #1A2038;
-    text-transform: uppercase;
-    line-height: 38px;
-
-    @include mq(tablet) {
-      margin-bottom: 35px;
-    }
-
-    @include mq(desktop) {
-      margin-bottom: 50px;
-      font-size: 32px;
-    }
-
-    @include mq(large-desktop) {
-      margin-bottom: 70px;
-    }
-
-    &:after {
-      content: '';
-      margin-top: 20px;
-      display: block;
-      height: 4px;
-      width: 100%;
-      background-color: var(--secondary-color);
-      border-radius: 4px;
-    }
-  }
 
   &__list {
     @extend %flex;

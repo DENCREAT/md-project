@@ -1,16 +1,18 @@
 <template>
   <div class="header">
-    <div class="container inner">
-      <Logo :variant="logoTypes.GRAY" class="header__logo"/>
-      <HeaderNav/>
-      <HeaderPhone class="header__phone"/>
+    <div class="container">
+      <div class="header__inner">
+        <Logo :variant="logoTypes.GRAY" class="header__logo"/>
+        <HeaderNav/>
+        <HeaderPhone class="header__phone"/>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import HeaderNav from './HeaderNav';
 import Logo from './Logo';
-import { LogoTypes } from '~/enums';
+import {LogoTypes} from '~/enums';
 import HeaderPhone from '~/components/HeaderPhone';
 
 export default {
@@ -24,20 +26,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .inner {
+@import "assets/styles/placeholders/flex";
+
+.header {
+  &__inner {
+    @extend %flex-v-center;
     padding: 50px 0;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
   }
 
-  .header {
-    &__logo {
-      margin-right: 30px;
-    }
-
-    &__phone {
-      margin-left: 30px;
-    }
+  &__logo {
+    margin-right: 30px;
   }
+
+  &__phone {
+    margin-left: 30px;
+  }
+}
 </style>
