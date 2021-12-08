@@ -1,58 +1,71 @@
 <template>
-  <section class="about-me" :style="{ ...bgStyles }">
-    <div class="container about-me__inner">
-      <div class="about-me__column">
-        <div class="about-me__subtitle">{{ subtitle }}</div>
-        <div class="about-me__title">{{ title }}</div>
-        <div class="about-me__text" v-html="text" />
-        <div class="about-me__buttons about-me__buttons--desktop">
-          <button class="btn about-me__more-btn">{{ moreBtnText }}</button>
-          <button class="btn btn--inverse about-me__contacts-btn">{{ contactsBtnText }}</button>
-        </div>
-      </div>
-      <div class="about-me__column about-me__column_img">
-        <div class="about-me__image">
-          <img src="/images/about-me-img.jpg">
-        </div>
-      </div>
-      <div class="about-me__buttons about-me__buttons--mobile">
-        <button class="btn about-me__more-btn">{{ moreBtnText }}</button>
-        <button class="btn btn--inverse about-me__contacts-btn">{{ contactsBtnText }}</button>
-      </div>
-    </div>
-  </section>
+	<section class="about-me" :style="{ ...bgStyles }">
+		<div class="container about-me__inner">
+			<div class="about-me__column">
+				<div class="about-me__subtitle">
+					{{ subtitle }}
+				</div>
+				<div class="about-me__title">
+					{{ title }}
+				</div>
+				<div class="about-me__text" v-html="text" />
+				<div class="about-me__buttons about-me__buttons--desktop">
+					<button class="btn about-me__more-btn">
+						{{ moreBtnText }}
+					</button>
+					<button class="btn btn--inverse about-me__contacts-btn">
+						{{ contactsBtnText }}
+					</button>
+				</div>
+			</div>
+			<div class="about-me__column about-me__column_img">
+				<div class="about-me__image">
+					<img src="/images/about-me-img.jpg" alt="">
+				</div>
+			</div>
+			<div class="about-me__buttons about-me__buttons--mobile">
+				<button class="btn about-me__more-btn">
+					{{ moreBtnText }}
+				</button>
+				<button class="btn btn--inverse about-me__contacts-btn">
+					{{ contactsBtnText }}
+				</button>
+			</div>
+		</div>
+	</section>
 </template>
 
 
 <script>
 export default {
-  props: {
-    bgUrl: {
-      type: String,
-      default: '/images/about-me-bg.jpg'
-    },
-  },
-  data() {
-    return {
-      title: 'Михайловский Денис Валериевич',
-      subtitle: 'Адвокат',
-      text: `
+	name: 'AboutMe',
+	props: {
+		bgUrl: {
+			type: String,
+			default: '/images/about-me-bg.jpg'
+		},
+	},
+	data() {
+		return {
+			title: 'Михайловский Денис Валериевич',
+			subtitle: 'Адвокат',
+			text: `
         <p>Я являюсь адвокатом с 2012 года. Моя юридическая практика начала формироваться 16 лет назад, когда я стал работать в судебной системе. За годы моей практики я сталкивался с различными юридическими ситуациями. Это позволило мне приобрести огромный опыт, наработать правовые знания, аналитическое и логическое мышление.</p>
         <p>На сегодняшний день я осуществляю профессиональную защиту интересов физических и юридических лиц. Благодаря солидному опыту берусь за сложные и запутанные дела, заставляю закон работать на моих доверителей. К решению любой проблемы, подхожу со всей ответственностью и пониманием, что простых дел не бывает - каждый случай индивидуальный. Обращаясь ко мне, вы можете рассчитывать на конфиденциальность и быть уверены в добросовестности и профессионализме оказываемых юридических услуг.</p>
       `,
-      moreBtnText: 'Узнать больше обо мне',
-      contactsBtnText: 'Контакты'
-    }
-  },
-  computed: {
-    bgStyles() {
-      return {
-        'background-image': `url(${this.bgUrl})`,
-        'background-size': 'cover'
-      }
-    }
-  }
-}
+			moreBtnText: 'Узнать больше обо мне',
+			contactsBtnText: 'Контакты'
+		};
+	},
+	computed: {
+		bgStyles() {
+			return {
+				'background-image': `url(${this.bgUrl})`,
+				'background-size': 'cover'
+			};
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,50 +1,59 @@
 <template>
-  <div>
-    <div class="wrapper">
-      <h1 class="title">{{ title }}</h1>
-      <div class="description">{{ description }}</div>
-      <button class="btn">{{ btnText }}</button>
-      <div class="add-info">{{ addInfo }}</div>
-      <div class="achievements">
-        <HomePageAchievement
-          v-for="achievement in achievements"
-          :achievement="achievement"
-          :key="achievement.id"/>
-      </div>
-    </div>
-  </div>
+	<div>
+		<div class="wrapper">
+			<h1 class="title">
+				{{ title }}
+			</h1>
+			<div class="description">
+				{{ description }}
+			</div>
+			<button class="btn">
+				{{ btnText }}
+			</button>
+			<div class="add-info">
+				{{ addInfo }}
+			</div>
+			<div class="achievements">
+				<HomePageAchievement
+					v-for="achievement in achievements"
+					:key="achievement.id"
+					:achievement="achievement" />
+			</div>
+		</div>
+	</div>
 </template>
 <script>
 
-import HomePageAchievement from "~/components/HomePageAchievement";
+import HomePageAchievement from '~/components/HomePageAchievement';
 export default {
-  components: {HomePageAchievement},
-  data() {
-    return {
-      title: 'Юридические услуги с гарантией результата',
-      description: 'Мы успешно оказываем юридическую помощь в области семейного, административного, жилищного, гражданского и уголовного права',
-      addInfo: 'Получите детальный анализ вашей ситуаци и план по ее разрешению совершенно бесплатно',
-      btnText: 'Записаться на консультацию',
-      achievements: [
-        {
-          count: '15',
-          comment: 'лет',
-          text: 'успешной работы'
-        },
-        {
-          count: '60+',
-          comment: '',
-          text: 'консультаций в месяц'
-        },
-        {
-          count: '250',
-          comment: 'дел',
-          text: 'в пользу наших клиентов'
-        }
-      ]
-    }
-  }
-}
+	name: 'HomePageStarterInfo',
+	data() {
+		return {
+			title: 'Юридические услуги с гарантией результата',
+			description: 'Мы успешно оказываем юридическую помощь в области семейного, административного, жилищного, гражданского и уголовного права',
+			addInfo: 'Получите детальный анализ вашей ситуаци и план по ее разрешению совершенно бесплатно',
+			btnText: 'Записаться на консультацию',
+			achievements: [
+				{
+					count: '15',
+					comment: 'лет',
+					text: 'успешной работы'
+				},
+				{
+					count: '60+',
+					comment: '',
+					text: 'консультаций в месяц'
+				},
+				{
+					count: '250',
+					comment: 'дел',
+					text: 'в пользу наших клиентов'
+				}
+			]
+		};
+	},
+	components: { HomePageAchievement }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,27 +1,28 @@
 <template>
-  <div class="wrapper" :style="{ ...bgStyles }">
-    <div class="container">
-       <slot />
-    </div>
-  </div>
+	<div class="wrapper" :style="{ ...bgStyles }">
+		<div class="container">
+			<slot />
+		</div>
+	</div>
 </template>
 <script>
 
 export default {
-  data() {
-    return {
-      bgStyles: {
-        'background-image': `url(${this.getBgUrl()})`,
-        'background-size': 'cover'
-      }
-    }
-  },
-  methods: {
-    getBgUrl(){
-      return require('~/assets/img/bg-starter-home-page.jpg');
-    }
-  }
-}
+	name: 'PageStarter',
+	data() {
+		return {
+			bgStyles: {
+				'background-image': `url(${this.getBgUrl()})`,
+				'background-size': 'cover'
+			}
+		};
+	},
+	methods: {
+		getBgUrl(){
+			return require('~/assets/img/bg-starter-home-page.jpg');
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>

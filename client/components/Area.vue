@@ -1,20 +1,30 @@
 <template>
-  <div class="area" :style="{ 'background-image': `url(${data.bgUrl})` }">
-    <div class="area__title">{{ data.title }}</div>
-    <div class="area__footer">
-      <button class="btn btn--transparent area__btn">Узнать больше</button>
-      <i class="area__icon">
-        <img :src="data.iconUrl" alt="">
-      </i>
-    </div>
-  </div>
+	<div class="area" :style="{ 'background-image': `url(${data.bgUrl})` }">
+		<div class="area__title">
+			{{ data.title }}
+		</div>
+		<div class="area__footer">
+			<button class="btn btn--transparent area__btn">
+				Узнать больше
+			</button>
+			<i class="area__icon">
+				<img :src="data.iconUrl" alt="">
+			</i>
+		</div>
+	</div>
 </template>
 
 
 <script>
 export default {
-  props: ['data']
-}
+	name: 'Area',
+	props: {
+		data: {
+			type: Object,
+			default: () => {}
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>

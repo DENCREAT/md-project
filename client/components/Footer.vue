@@ -1,119 +1,123 @@
 <template>
-  <div class="footer">
-    <div class="container footer__inner">
-      <div class="footer__column footer__logo">
-        <Logo :variant="logoTypes.BIG" />
-      </div>
-      <div class="footer__column">
-        <nav>
-          <ul class="footer__nav">
-            <li
-              v-for="item in navItems"
-              :key="item.id"
-              class="footer__nav-item">
-              <a :href="item.url" class="footer__nav-link">{{ item.title }}</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer__column">
-        <nav>
-          <ul class="footer__nav">
-            <li
-              v-for="item in addNavItems"
-              :key="item.id"
-              class="footer__nav-item">
-              <a :href="item.url" class="footer__nav-link simple">{{ item.title }}</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer__column footer__column_privacy">
-        <a href="#" class="footer__nav-link simple footer__privacy-link">Конфиденциальность и <br>безопасность</a>
-        <p class="footer__copyright">{{ copyright }}</p>
-      </div>
-      <div class="footer__column footer__column_contact">
-        <div class="footer__contact">
-          <a href="tel:+79533435353" class="footer__phone">+7 (953) 343 53 53</a>
-          <p class="footer__address" v-html="address" />
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="footer">
+		<div class="container footer__inner">
+			<div class="footer__column footer__logo">
+				<Logo :variant="logoTypes.BIG" />
+			</div>
+			<div class="footer__column">
+				<nav>
+					<ul class="footer__nav">
+						<li
+							v-for="item in navItems"
+							:key="item.id"
+							class="footer__nav-item">
+							<a :href="item.url" class="footer__nav-link">{{ item.title }}</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="footer__column">
+				<nav>
+					<ul class="footer__nav">
+						<li
+							v-for="item in addNavItems"
+							:key="item.id"
+							class="footer__nav-item">
+							<a :href="item.url" class="footer__nav-link simple">{{ item.title }}</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="footer__column footer__column_privacy">
+				<a href="#" class="footer__nav-link simple footer__privacy-link">Конфиденциальность и <br>безопасность</a>
+				<p class="footer__copyright">
+					{{ copyright }}
+				</p>
+			</div>
+			<div class="footer__column footer__column_contact">
+				<div class="footer__contact">
+					<a href="tel:+79533435353" class="footer__phone">+7 (953) 343 53 53</a>
+					<p class="footer__address" v-html="address" />
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import {LogoTypes} from '~/enums';
+
 import Logo from '~/components/Logo.vue';
-import {NavigationItem} from '~/interfaces';
+import { LogoTypes } from '~/enums';
+import { NavigationItem } from '~/interfaces';
 
 export default Vue.extend({
-  components: {Logo},
-  data() {
-    return {
-      logoTypes: LogoTypes,
-      copyright: '© «MIHAYLOVSKY», 2012 - 2021',
-      address: '190005, г. Санкт - Петербург, Измайловский проспеет,<br>18д, офис 27 Н<br>(м. Технологический институт-1)',
-      navItems: [
-        {
-          title: 'Главная страница',
-          url: '/'
-        },
-        {
-          title: 'Обо мне',
-          url: '/'
-        },
-        {
-          title: 'Юридические услуги',
-          url: '/'
-        },
-        {
-          title: 'Успешные дела/процессы',
-          url: '/'
-        },
-        {
-          title: 'Про боно',
-          url: '/'
-        },
-        {
-          title: 'Блог',
-          url: '/'
-        },
-        {
-          title: 'Контакты',
-          url: '/'
-        },
-      ] as NavigationItem[],
-      addNavItems: [
-        {
-          title: 'Сфера денежных обязательств',
-          url: '/'
-        },
-        {
-          title: 'Сфера недвижимости',
-          url: '/'
-        },
-        {
-          title: 'Сфера оказания услуг',
-          url: '/'
-        },
-        {
-          title: 'Сфера семейных правоотношений',
-          url: '/'
-        },
-        {
-          title: 'Сфера защиты прав автовладельцев',
-          url: '/'
-        },
-        {
-          title: 'Сфера уголовных и иных дел',
-          url: '/'
-        },
-      ] as NavigationItem[]
-    }
-  }
-})
+	name: 'Footer',
+	data() {
+		return {
+			logoTypes: LogoTypes,
+			copyright: '© «MIHAYLOVSKY», 2012 - 2021',
+			address: '190005, г. Санкт - Петербург, Измайловский проспеет,<br>18д, офис 27 Н<br>(м. Технологический институт-1)',
+			navItems: [
+				{
+					title: 'Главная страница',
+					url: '/'
+				},
+				{
+					title: 'Обо мне',
+					url: '/'
+				},
+				{
+					title: 'Юридические услуги',
+					url: '/'
+				},
+				{
+					title: 'Успешные дела/процессы',
+					url: '/'
+				},
+				{
+					title: 'Про боно',
+					url: '/'
+				},
+				{
+					title: 'Блог',
+					url: '/'
+				},
+				{
+					title: 'Контакты',
+					url: '/'
+				},
+			] as NavigationItem[],
+			addNavItems: [
+				{
+					title: 'Сфера денежных обязательств',
+					url: '/'
+				},
+				{
+					title: 'Сфера недвижимости',
+					url: '/'
+				},
+				{
+					title: 'Сфера оказания услуг',
+					url: '/'
+				},
+				{
+					title: 'Сфера семейных правоотношений',
+					url: '/'
+				},
+				{
+					title: 'Сфера защиты прав автовладельцев',
+					url: '/'
+				},
+				{
+					title: 'Сфера уголовных и иных дел',
+					url: '/'
+				},
+			] as NavigationItem[]
+		};
+	},
+	components: { Logo }
+});
 </script>
 
 <style lang="scss" scoped>

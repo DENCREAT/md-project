@@ -1,13 +1,14 @@
 <template>
-  <div class="wrapper">
-    <a class="phone" href="tel:+79533435353">+7 (953) 343 53 53</a>
-    <a class="action" href="#">Заказать звонок</a>
-  </div>
+	<div class="wrapper">
+		<a class="phone" href="tel:+79533435353">+7 (953) 343 53 53</a>
+		<a class="action" href="#">Заказать звонок</a>
+	</div>
 </template>
 <script>
 
 export default {
-}
+	name: 'HeaderPhone'
+};
 </script>
 
 <style lang="scss" scoped>

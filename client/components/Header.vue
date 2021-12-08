@@ -1,28 +1,39 @@
 <template>
-  <div class="header">
-    <div class="container">
-      <div class="header__inner">
-        <Logo :variant="logoTypes.GRAY" class="header__logo"/>
-        <HeaderNav/>
-        <HeaderPhone class="header__phone"/>
-      </div>
-    </div>
-  </div>
+	<div class="header">
+		<div class="container">
+			<div class="header__inner">
+				<Logo :variant="logoTypes.GRAY" class="header__logo" />
+				<HeaderNav v-if="showDesktopMenu" />
+				<HeaderPhone class="header__phone" />
+			</div>
+		</div>
+	</div>
 </template>
-<script>
-import HeaderNav from './HeaderNav';
-import Logo from './Logo';
-import {LogoTypes} from '~/enums';
-import HeaderPhone from '~/components/HeaderPhone';
+<script lang="ts">
 
-export default {
-  components: {HeaderPhone, Logo, HeaderNav},
-  data() {
-    return {
-      logoTypes: LogoTypes
-    }
-  }
-}
+import Vue, { VueConstructor } from 'vue';
+
+import HeaderNav from '~/components/HeaderNav.vue';
+import HeaderPhone from '~/components/HeaderPhone.vue';
+import Logo from '~/components/Logo.vue';
+import { LogoTypes } from '~/enums';
+import { breakpointObserver } from '~/nixins/breakpoint-observer';
+
+export default (Vue as VueConstructor<Vue & InstanceType<typeof breakpointObserver>>).extend({
+	name: 'Header',
+	mixins: [breakpointObserver],
+	data() {
+		return {
+			logoTypes: LogoTypes
+		};
+	},
+	computed: {
+		showDesktopMenu(): boolean {
+			return !this.device.isMobile && !this.device.isTablet && !this.device.isBigTablet;
+		}
+	},
+	components: { HeaderPhone, Logo, HeaderNav }
+});
 </script>
 
 <style lang="scss" scoped>

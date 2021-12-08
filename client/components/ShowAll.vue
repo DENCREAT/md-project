@@ -1,14 +1,26 @@
 <template>
-  <div class="sa-wrapper">
-    <nuxt-link :to="url" class="show-all">{{ title }}</nuxt-link>
-  </div>
+	<div class="sa-wrapper">
+		<nuxt-link :to="url" class="show-all">
+			{{ title }}
+		</nuxt-link>
+	</div>
 </template>
 
 
 <script>
 export default {
-  props: ['url', 'title']
-}
+	name: 'ShowAll',
+	props: {
+		url: {
+			type: String,
+			default: ''
+		},
+		title: {
+			type: String,
+			default: ''
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>

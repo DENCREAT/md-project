@@ -1,45 +1,46 @@
 <template>
-  <SectionLightWrapper class="affairs" :title="title">
-    <div class="affairs__list">
-      <AffairItem
-        v-for="item in affairs"
-        :key="item.id"
-        :data="item"
-        class="affairs__item" />
-    </div>
-    <ShowAll url="/" title="Смотреть все дела" class="affairs__show-all"/>
-  </SectionLightWrapper>
+	<SectionLightWrapper class="affairs" :title="title">
+		<div class="affairs__list">
+			<AffairItem
+				v-for="item in affairs"
+				:key="item.id"
+				:data="item"
+				class="affairs__item" />
+		</div>
+		<ShowAll url="/" title="Смотреть все дела" class="affairs__show-all" />
+	</SectionLightWrapper>
 </template>
 
 <script>
-import SectionLightWrapper from "~/components/SectionLightWrapper";
-import AffairItem from "~/components/AffairItem";
-import ShowAll from "~/components/ShowAll";
+import AffairItem from '~/components/AffairItem';
+import SectionLightWrapper from '~/components/SectionLightWrapper';
+import ShowAll from '~/components/ShowAll';
 export default {
-  components: {ShowAll, AffairItem, SectionLightWrapper},
-  data() {
-    return {
-      title: 'Мои успешные дела',
-      affairs: [
-        {
-          title: 'Доверитель защищён от чёрных риелторов по договору займа с одновременным залогом имущества',
-          url: '/',
-          imgUrl: '/images/affair.png',
-        },
-        {
-          title: 'В пользу моего доверителя завершён судебный спор против автосалона',
-          url: '/',
-          imgUrl: '/images/affair.png',
-        },
-        {
-          title: 'Пожар, потоп: как не стать жертвой управляющей компании',
-          url: '/',
-          imgUrl: '/images/affair.png',
-        },
-      ]
-    }
-  }
-}
+	name: 'Affairs',
+	data() {
+		return {
+			title: 'Мои успешные дела',
+			affairs: [
+				{
+					title: 'Доверитель защищён от чёрных риелторов по договору займа с одновременным залогом имущества',
+					url: '/',
+					imgUrl: '/images/affair.png',
+				},
+				{
+					title: 'В пользу моего доверителя завершён судебный спор против автосалона',
+					url: '/',
+					imgUrl: '/images/affair.png',
+				},
+				{
+					title: 'Пожар, потоп: как не стать жертвой управляющей компании',
+					url: '/',
+					imgUrl: '/images/affair.png',
+				},
+			]
+		};
+	},
+	components: { ShowAll, AffairItem, SectionLightWrapper }
+};
 </script>
 
 <style lang="scss" scoped>

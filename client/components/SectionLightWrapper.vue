@@ -1,16 +1,24 @@
 <template>
-  <section>
-    <div class="container">
-      <h2 class="title">{{ title }}</h2>
-      <slot />
-    </div>
-  </section>
+	<section>
+		<div class="container">
+			<h2 class="title">
+				{{ title }}
+			</h2>
+			<slot />
+		</div>
+	</section>
 </template>
 
 <script>
 export default {
-  props: ['title'],
-}
+	name: 'SectionLightWrapper',
+	props: {
+		title: {
+			type: String,
+			default: ''
+		}
+	},
+};
 </script>
 
 <style lang="scss" scoped>

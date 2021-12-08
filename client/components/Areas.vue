@@ -1,64 +1,66 @@
 <template>
-  <SectionLightWrapper class="areas" :title="title">
-    <div class="areas__list">
-      <Area
-        v-for="item in areas"
-        :key="item.id"
-        :data="item"
-        class="areas__item" />
-    </div>
-  </SectionLightWrapper>
+	<SectionLightWrapper class="areas" :title="title">
+		<div class="areas__list">
+			<Area
+				v-for="item in areas"
+				:key="item.id"
+				:data="item"
+				class="areas__item" />
+		</div>
+	</SectionLightWrapper>
 </template>
 
 <script>
-import Area from "./Area";
-import SectionLightWrapper from "~/components/SectionLightWrapper";
+import SectionLightWrapper from '~/components/SectionLightWrapper';
+
+import Area from './Area';
 export default {
-  components: {SectionLightWrapper, Area},
-  data() {
-    return {
-      title: 'Сферы практики',
-      areas: [
-        {
-          title: 'Сфера дененежных обязательствв',
-          url: '/',
-          bgUrl: '/images/area.jpg',
-          iconUrl: '/images/area-icon.svg'
-        },
-        {
-          title: 'Сфера недвижимости',
-          url: '/',
-          bgUrl: '/images/area.jpg',
-          iconUrl: '/images/area-icon.svg'
-        },
-        {
-          title: 'Сфера оказания услуг',
-          url: '/',
-          bgUrl: '/images/area.jpg',
-          iconUrl: '/images/area-icon.svg'
-        },
-        {
-          title: 'Сфера семейных правоотношений',
-          url: '/',
-          bgUrl: '/images/area.jpg',
-          iconUrl: '/images/area-icon.svg'
-        },
-        {
-          title: 'Сфера защиты прав автовладельцев',
-          url: '/',
-          bgUrl: '/images/area.jpg',
-          iconUrl: '/images/area-icon.svg'
-        },
-        {
-          title: 'Сфера уголовных и иных дел',
-          url: '/',
-          bgUrl: '/images/area.jpg',
-          iconUrl: '/images/area-icon.svg'
-        },
-      ]
-    }
-  }
-}
+	name: 'Areas',
+	data() {
+		return {
+			title: 'Сферы практики',
+			areas: [
+				{
+					title: 'Сфера дененежных обязательствв',
+					url: '/',
+					bgUrl: '/images/area.jpg',
+					iconUrl: '/images/area-icon.svg'
+				},
+				{
+					title: 'Сфера недвижимости',
+					url: '/',
+					bgUrl: '/images/area.jpg',
+					iconUrl: '/images/area-icon.svg'
+				},
+				{
+					title: 'Сфера оказания услуг',
+					url: '/',
+					bgUrl: '/images/area.jpg',
+					iconUrl: '/images/area-icon.svg'
+				},
+				{
+					title: 'Сфера семейных правоотношений',
+					url: '/',
+					bgUrl: '/images/area.jpg',
+					iconUrl: '/images/area-icon.svg'
+				},
+				{
+					title: 'Сфера защиты прав автовладельцев',
+					url: '/',
+					bgUrl: '/images/area.jpg',
+					iconUrl: '/images/area-icon.svg'
+				},
+				{
+					title: 'Сфера уголовных и иных дел',
+					url: '/',
+					bgUrl: '/images/area.jpg',
+					iconUrl: '/images/area-icon.svg'
+				},
+			]
+		};
+	},
+	components: { SectionLightWrapper, Area }
+};
 </script>
 
 <style lang="scss" scoped>

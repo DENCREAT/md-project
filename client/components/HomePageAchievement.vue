@@ -1,16 +1,24 @@
 <template>
-  <div class="achievement">
-    <div class="achievement__header">
-      {{ achievement.count }} <span class="small">{{ achievement.comment }}</span>
-    </div>
-    <div class="achievement__footer">{{ achievement.text }}</div>
-  </div>
+	<div class="achievement">
+		<div class="achievement__header">
+			{{ achievement.count }} <span class="small">{{ achievement.comment }}</span>
+		</div>
+		<div class="achievement__footer">
+			{{ achievement.text }}
+		</div>
+	</div>
 </template>
 <script>
 
 export default {
-  props: ['achievement']
-}
+	name: 'HomePageAchievement',
+	props: {
+		achievement: {
+			type: Object,
+			default: () => {}
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>

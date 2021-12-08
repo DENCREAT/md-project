@@ -1,28 +1,36 @@
 <template>
-  <div class="affair-item">
-    <div class="affair-item__content" :style="{ ...bgStyles }">
-      <div class="affair-item__title">{{ data.title }}</div>
-    </div>
-    <div class="affair-item__footer">
-      <a href="/" class="affair-item__link">Подробнее</a>
-    </div>
-  </div>
+	<div class="affair-item">
+		<div class="affair-item__content" :style="{ ...bgStyles }">
+			<div class="affair-item__title">
+				{{ data.title }}
+			</div>
+		</div>
+		<div class="affair-item__footer">
+			<a href="/" class="affair-item__link">Подробнее</a>
+		</div>
+	</div>
 </template>
 
 
 <script>
 export default {
-  props: ['data'],
-  computed: {
-    bgStyles() {
-      return {
-        'background-image': `url(${this.data.imgUrl})`,
-        'background-size': 'cover',
-        'background-repeat': 'no-repeat'
-      };
-    }
-  }
-}
+	name: 'AffairItem',
+	props: {
+		data: {
+			type: Object,
+			default: () =>{}
+		}
+	},
+	computed: {
+		bgStyles() {
+			return {
+				'background-image': `url(${this.data.imgUrl})`,
+				'background-size': 'cover',
+				'background-repeat': 'no-repeat'
+			};
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -41,8 +49,7 @@ export default {
   &__title {
     position: relative;
     z-index: 1;
-    padding: 20px;
-    padding-bottom: 62px;
+    padding: 20px 20px 60px 20px;
     font-size: 20px;
     font-weight: 800;
     line-height: 25px;
