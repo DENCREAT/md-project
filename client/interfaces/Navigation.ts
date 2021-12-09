@@ -1,4 +1,5 @@
 export interface NavigationItem {
   title: string;
-  url: string
+  url: string,
+  forHidden?: boolean;
 }

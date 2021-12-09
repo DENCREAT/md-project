@@ -30,6 +30,6 @@ export default {
     background-color: var(--primary-color);
     padding-top: 128px;
     min-height: 100vh;
-    max-height: 990px;
+    max-height: 1100px;
   }
 </style>

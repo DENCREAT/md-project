@@ -7,9 +7,9 @@ import { BREAKPOINTS_CONFIG } from '@/enums/BreakpointsConfig';
 export const breakpointObserver = mixins().extend({
 	data() {
 		return {
-			observerDebounceFunction: () => {},
+			observerDebounceFunction: (e: Event) => {},
 			observerDebounceTime: 300 as number,
-			currentWindowWidth: window.innerWidth as number
+			currentWindowWidth: process.client && window.innerWidth  as number
 		};
 	},
 	computed: {

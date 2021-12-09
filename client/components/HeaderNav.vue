@@ -1,12 +1,17 @@
 <template>
 	<nav>
 		<ul class="menu">
-			<li v-for="item in items" :key="item.id" class="menu__item">
+			<li
+				v-for="item in items"
+				:key="item.id"
+				class="menu__item"
+				:class="{ 'hidden': item.forHidden }">
 				<a :href="item.url" class="menu__item-link">{{ item.title }}</a>
 			</li>
 		</ul>
 	</nav>
 </template>
+
 <script lang="ts">
 import Vue from 'vue';
 
@@ -35,11 +40,13 @@ export default Vue.extend({
 				},
 				{
 					title: 'Про боно',
-					url: '/'
+					url: '/',
+					forHidden: true
 				},
 				{
 					title: 'Блог',
-					url: '/'
+					url: '/',
+					forHidden: true
 				},
 				{
 					title: 'Контакты',
@@ -51,35 +58,46 @@ export default Vue.extend({
 });
 </script>
 <style lang="scss" scoped>
-  nav {
-    position: relative;
-    padding-bottom: 13px;
+@import "assets/styles/mixins/mq";
 
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 3px;
-      border-radius: 1.5px;
-      background-color: var(--secondary-color);
-    }
+nav {
+  position: relative;
+  padding-bottom: 13px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: var(--secondary-color);
   }
+}
 
-  .menu {
-    display: flex;
-    list-style: none;
+.menu {
+  display: flex;
+  list-style: none;
 
-    &__item {
-      & + & {
-        margin-left: 15px;
+  &__item {
+    & + & {
+      margin-left: 15px;
+    }
+
+    &.hidden {
+      @include mq(desktop) {
+        display: none;
+      }
+      @include mq(large-desktop) {
+        display: inline-block;
       }
     }
-
-    &__item-link {
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
   }
+
+  &__item-link {
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
 </style>
