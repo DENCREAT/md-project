@@ -1,7 +1,7 @@
 <template>
 	<div class="page-wrapper home-page">
-		<Header class="header" />
-		<main class="main">
+		<Header />
+		<main>
 			<slot name="starterContent" />
 			<slot name="content" />
 		</main>

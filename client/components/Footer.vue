@@ -1,10 +1,10 @@
 <template>
 	<div class="footer">
 		<div class="container footer__inner">
-			<div class="footer__column footer__logo">
+			<div class="footer__column footer__column_logo">
 				<Logo :variant="logoTypes.BIG" />
 			</div>
-			<div class="footer__column">
+			<div class="footer__column footer__column_main-nav">
 				<nav>
 					<ul class="footer__nav">
 						<li
@@ -16,7 +16,7 @@
 					</ul>
 				</nav>
 			</div>
-			<div class="footer__column">
+			<div class="footer__column footer__column_nav">
 				<nav>
 					<ul class="footer__nav">
 						<li
@@ -57,7 +57,7 @@ export default Vue.extend({
 		return {
 			logoTypes: LogoTypes,
 			copyright: '© «MIHAYLOVSKY», 2012 - 2021',
-			address: '190005, г. Санкт - Петербург, Измайловский проспеет,<br>18д, офис 27 Н<br>(м. Технологический институт-1)',
+			address: '190005, г. Санкт - Петербург,<br> Измайловский проспеет,<br>18д, офис 27 Н<br>(м. Технологический институт-1)',
 			navItems: [
 				{
 					title: 'Главная страница',
@@ -122,14 +122,22 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 @import "assets/styles/placeholders/flex";
+@import "assets/styles/mixins/mq";
 
 .footer {
-  padding: 70px 0;
+  padding: 30px 0;
   background-color: #3F4868;
 
   &__inner {
     @extend %flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    @include mq(large-tablet) {
+      flex-direction: row;
+      align-items: initial;
+      justify-content: space-between;
+    }
   }
 
   &__nav-link {
@@ -155,8 +163,40 @@ export default Vue.extend({
     &_privacy {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      margin-right: 30px;
+      margin-top: 33px;
+      text-align: center;
+      order: 4;
+
+      @include mq(large-tablet) {
+        order: initial;
+        text-align: left;
+        margin-top: 0;
+        justify-content: space-between;
+      }
+    }
+    &_nav,
+    &_main-nav{
+      display: none;
+    }
+
+    &_nav {
+      @include mq(1366px) {
+        display: flex;
+      }
+    }
+
+    &_main-nav {
+      @include mq(large-tablet) {
+        display: flex;
+      }
+    }
+
+    &_logo {
+      margin-bottom: 25px;
+
+      @include mq(large-tablet) {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -165,6 +205,7 @@ export default Vue.extend({
   }
 
   &__phone {
+    display: inline-flex;
     font-size: 18px;
     font-weight: 700;
   }
@@ -172,11 +213,15 @@ export default Vue.extend({
   &__contact {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+
+    @include mq(large-tablet) {
+      align-items: flex-end;
+    }
   }
 
   &__copyright {
-    margin-bottom: 22px;
+    margin-bottom: 35px;
     color: #9298AE;
     font-size: 10px;
   }
@@ -184,10 +229,14 @@ export default Vue.extend({
   &__address {
     margin-top: 28px;
     color: var(--white-color);
-    text-align: right;
+    text-align: center;
     font-size: 12px;
     font-weight: 800;
     line-height: 1.43;
+
+    @include mq(large-tablet) {
+      text-align: right;
+    }
   }
 }
 

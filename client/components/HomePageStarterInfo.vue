@@ -68,21 +68,28 @@ export default {
   @extend %flex;
   z-index: 1;
   flex-direction: column;
-  padding-top: 15px;
-  padding-bottom: 53px;
+  padding-bottom: 20px;
+  min-height: 750px;
 
   @include mq(tablet) {
-    padding-top: 150px;
     max-width: 590px;
+  }
+
+  @include mq(desktop) {
+    padding-top: 150px;
   }
 }
 
 .title {
   margin-bottom: 12px;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: var(--fw-bold);
   line-height: 38px;
   color: var(--white-color);
+
+  @include mq(large-mmobile) {
+    font-size: 30px;
+  }
 
   @include mq(tablet) {
     font-size: 42px;
@@ -93,10 +100,14 @@ export default {
 
 .description {
   margin-bottom: 65px;
-  font-size: 18px;
+  font-size: 15px;
   color: var(--white-color);
   font-weight: var(--fw-bold);
   line-height: 23px;
+
+  @include mq(large-mmobile) {
+    font-size: 18px;
+  }
 
   @include mq(tablet) {
     font-size: 20px;
@@ -122,13 +133,22 @@ export default {
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 38px;
+  font-size: 16px;
+
+  @include mq(large-mmobile) {
+    font-size: 18px;
+  }
 }
 
 .achievements {
   @extend %flex;
   max-width: 460px;
   margin-top: 65px;
-  column-gap: 37px;
+  column-gap: 5%;
+
+  @include mq(large-mmobile) {
+    font-size: 30px;
+  }
 
   @include mq(tablet) {
     column-gap: 60px;
@@ -142,5 +162,10 @@ export default {
 .wrapper-bottom {
   @extend %flex;
   flex-direction: column-reverse;
+  max-width: 458px;
+
+  @include mq(tablet) {
+    flex-direction: column;
+  }
 }
 </style>

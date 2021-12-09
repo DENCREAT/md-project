@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
 
 import HeaderNav from '~/components/HeaderNav.vue';
 import HeaderPhone from '~/components/HeaderPhone.vue';
@@ -39,6 +39,9 @@ export default Vue.extend({
 @import "assets/styles/mixins/size";
 
 .header {
+  position: absolute;
+  width: 100%;
+
   &__inner {
     @extend %flex-v-center;
     position: relative;
