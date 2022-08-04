@@ -1,0 +1,9 @@
+@function set-important($is-important, $value) {
+	$important: null;
+
+	@if $is-important == true {
+		$important: !important;
+	}
+
+	@return $value $important;
+}

@@ -1,0 +1,46 @@
+<template>
+	<div>
+		<svg
+			width="33"
+			height="20"
+			viewBox="0 0 33 20"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<line
+				x1="2"
+				y1="2"
+				x2="31"
+				y2="2"
+				stroke="white"
+				stroke-width="4"
+				stroke-linecap="round" />
+			<line
+				x1="8"
+				y1="9.60657"
+				x2="31"
+				y2="9.60657"
+				stroke="white"
+				stroke-width="4"
+				stroke-linecap="round" />
+			<line
+				x1="14"
+				y1="17.2131"
+				x2="31"
+				y2="17.2131"
+				stroke="white"
+				stroke-width="4"
+				stroke-linecap="round" />
+		</svg>
+	</div>
+</template>
+
+
+<script>
+export default {
+	name: 'MobileMenuBtn',
+};
+</script>
+
+<style lang="scss" scoped>
+
+</style>

@@ -1,9 +1,0 @@
-@import "../breakpoints";
-
-@function getBreakpoint($device) {
-  @return map-get($breakpoints, $device);
-}
-
-@function isExistBreakpoint($key) {
-  @return map-has-key($breakpoints, $key);
-}

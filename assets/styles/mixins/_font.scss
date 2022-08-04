@@ -1,0 +1,48 @@
+@use "sass:math";
+@import "assets/styles/functions/decimal-round";
+
+$FONT_SIZE_CONFIG: (
+        10: 12,
+        11: 13,
+        12: 14,
+        13: 16,
+        14: 18,
+        15: 18,
+        16: 20,
+        18: 24,
+        20: 26,
+        //22: 28,
+        24: 32,
+        26: 38,
+        30: 38,
+        32: 40,
+        34: 42,
+        36: 44,
+        42: 54,
+);
+
+$FONT_WEIGHT_CONFIG: (
+        light: var(--fw-light),
+        regular: var(--fw-regular),
+        medium: var(--fw-medium),
+        medium-bold: var(--fw-medium-bold),
+        bold: var(--fw-bold),
+        extra-bold: var(--fw-extra-bold),
+);
+
+@mixin font($_size, $_fw: null, $_lh: null) {
+  font-size: #{$_size}px;
+
+  @if not $_lh {
+    $_lh: map-get($FONT_SIZE_CONFIG, $_size);
+    line-height: decimal-round(math.div($_lh, $_size), 2);
+  }
+
+  @else {
+    line-height: $_lh;
+  }
+
+  @if $_fw {
+    font-weight: map-get($FONT_WEIGHT_CONFIG, $_fw);
+  }
+}

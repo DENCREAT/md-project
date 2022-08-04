@@ -1,0 +1,13 @@
+@import "assets/styles/functions/str-split";
+@import "assets/styles/functions/set-important";
+@import "assets/styles/functions/in-list";
+
+@mixin set-flex($props, $is-important: false, $important-props: null) {
+	@each $prop in $props {
+		$parsed-props: str-split($prop, '/');
+		$parsed-prop: nth($parsed-props, 1);
+		$parsed-value: nth($parsed-props, 2);
+
+		#{$parsed-prop}: set-important($is-important and in-list($important-props, $parsed-prop), $parsed-value);
+	}
+}

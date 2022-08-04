@@ -1,0 +1,37 @@
+@import "set-flex";
+
+@mixin flex-center($is-important: false, $important-props: display) {
+	$props: display/flex align-items/center justify-content/center;
+
+	@include set-flex($props, $is-important, $important-props);
+}
+
+@mixin flex-v-center($is-important: false, $important-props: display) {
+	$props: display/flex align-items/center;
+
+	@include set-flex($props, $is-important, $important-props);
+}
+
+@mixin flex-h-center($is-important: false, $important-props: display) {
+	$props: display/flex justify-content/center;
+
+	@include set-flex($props, $is-important, $important-props);
+}
+
+@mixin inline-flex-center($is-important: false, $important-props: display) {
+	$props: display/inline-flex align-items/center justify-content/center;
+
+	@include set-flex($props, $is-important, $important-props);
+}
+
+@mixin inline-flex-v-center($is-important: false, $important-props: display) {
+	$props: display/inline-flex align-items/center;
+
+	@include set-flex($props, $is-important, $important-props);
+}
+
+@mixin inline-flex-h-center($is-important: false, $important-props: display) {
+	$props: display/inline-flex justify-content/center;
+
+	@include set-flex($props, $is-important, $important-props);
+}
