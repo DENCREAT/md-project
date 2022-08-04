@@ -66,13 +66,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "assets/styles/placeholders/flex";
 @import "assets/styles/mixins/mq";
 
 .areas {
-
   &__list {
-    @extend %flex;
+    display: flex;
     flex-direction: column;
     row-gap: 24px;
 

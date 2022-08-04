@@ -1,9 +1,9 @@
 @import "assets/styles/breakpoints";
 
-@function getBreakpoint($device) {
+@function get-breakpoint($device) {
   @return map-get($breakpoints, $device);
 }
 
-@function isExistBreakpoint($key) {
+@function is-exist-breakpoint($key) {
   @return map-has-key($breakpoints, $key);
 }

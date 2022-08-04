@@ -7,21 +7,26 @@
 				<div class="about-me__subtitle">
 					{{ subtitle }}
 				</div>
+
 				<div class="about-me__title">
 					{{ title }}
 				</div>
+
 				<div
 					class="about-me__text"
 					v-html="text" />
+
 				<div class="about-me__buttons about-me__buttons--desktop">
-					<button class="btn about-me__more-btn">
+					<MDBtn class="about-me__more-btn">
 						{{ moreBtnText }}
-					</button>
-					<button class="btn btn--inverse about-me__contacts-btn">
+					</MDBtn>
+
+					<MDBtn class="btn--inverse about-me__contacts-btn">
 						{{ contactsBtnText }}
-					</button>
+					</MDBtn>
 				</div>
 			</div>
+
 			<div class="about-me__column about-me__column_img">
 				<div class="about-me__image">
 					<img
@@ -29,13 +34,15 @@
 						alt="">
 				</div>
 			</div>
+
 			<div class="about-me__buttons about-me__buttons--mobile">
-				<button class="btn about-me__more-btn">
+				<MDBtn class="about-me__more-btn">
 					{{ moreBtnText }}
-				</button>
-				<button class="btn btn--inverse about-me__contacts-btn">
+				</MDBtn>
+
+				<MDBtn class="btn--inverse about-me__contacts-btn">
 					{{ contactsBtnText }}
-				</button>
+				</MDBtn>
 			</div>
 		</div>
 	</section>

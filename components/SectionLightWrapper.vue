@@ -41,7 +41,11 @@ export default {
 		color: #1A2038;
 		text-transform: uppercase;
 
-		@include font(30, bold);
+		@include font(24, bold);
+
+		@include mq(large-mobile) {
+			@include font(30);
+		}
 
 		@include mq(tablet) {
 			margin-bottom: 35px;

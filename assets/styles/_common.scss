@@ -10,8 +10,9 @@
 
 a {
 	text-decoration: none;
-	font-size: 14px;
 	color: var(--white-color);
+
+	@include font(14);
 }
 
 body {
@@ -24,11 +25,7 @@ body {
 }
 
 .container {
-	padding: 0 20px;
+	padding: 0 var(--base-indent);
 	max-width: 1520px;
 	margin: 0 auto;
-
-	@include mq(desktop) {
-		padding: 0 15px;
-	}
 }

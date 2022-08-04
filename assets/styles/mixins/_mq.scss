@@ -1,22 +1,21 @@
 @import "assets/styles/functions/breakpoint";
 
-@mixin mq($value, $mobile-first: true) {
-  $breakpoint: null;
-  $from: null;
+@mixin mq($from, $_desktop-first: false) {
+	$_breakpoint: null;
+	$_width-prop: 'min-width';
 
-  @if (isExistBreakpoint($value)) {
-    $breakpoint: getBreakpoint($value);
-  } @else {
-    $breakpoint: $value;
-  }
+	@if (is-exist-breakpoint($from)) {
+		$_breakpoint: get-breakpoint($from);
+	} @else {
+		$_breakpoint: $from;
+	}
 
-  @if ($mobile-first) {
-    $from: min-width;
-  } @else {
-    $from: max-width;
-  }
+	@if $_desktop-first {
+		$_width-prop: 'max-width';
+		$_breakpoint: $_breakpoint - 1px;
+	}
 
-  @media only screen and ($from: $breakpoint) {
-    @content;
-  }
+	@media only screen and (#{$_width-prop}: $_breakpoint) {
+		@content;
+	}
 }

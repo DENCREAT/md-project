@@ -87,6 +87,7 @@ export default {
 
 	@include mq(desktop) {
 		padding-top: 150px;
+		padding-bottom: 60px;
 	}
 
 	&__title {

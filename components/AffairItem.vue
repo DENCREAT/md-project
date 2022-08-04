@@ -46,13 +46,20 @@ export default {
 @import "assets/styles/mixins/font";
 
 .affair-item {
+	display: flex;
 	padding: 9px 9px 0 9px;
 	flex-direction: column;
-	height: 455px;
+	height: 360px;
 	background-color: var(--primary-color);
 	color: var(--white-color);
 
-	@extend %flex;
+	@include mq(large-mobile) {
+		height: 400px;
+	}
+
+	@include mq(tablet) {
+		height: 455px;
+	}
 
 	&__title {
 		position: relative;
