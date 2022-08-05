@@ -1,28 +1,30 @@
 <template>
-	<SectionLightWrapper
-		class="affairs"
+	<SectionWrapper
 		:title="title">
-		<div class="affairs__list">
-			<AffairItem
-				v-for="item in affairs"
-				:key="item.url"
-				:data="item"
-				class="affairs__item" />
+		<div class="affairs">
+			<div class="affairs__list">
+				<AffairItem
+					v-for="item in affairs"
+					:key="item.url"
+					:data="item"
+					class="affairs__item" />
+			</div>
+
+			<ShowAll
+				url="/"
+				title="Смотреть все дела" />
 		</div>
-		<ShowAll
-			url="/"
-			title="Смотреть все дела"
-			class="affairs__show-all" />
-	</SectionLightWrapper>
+	</SectionWrapper>
 </template>
 
 <script>
 import AffairItem from '~/components/AffairItem';
-import SectionLightWrapper from '~/components/SectionLightWrapper';
+import SectionWrapper from '~/components/SectionWrapper';
 import ShowAll from '~/components/ShowAll';
+
 export default {
 	name: 'Affairs',
-	components: { ShowAll, AffairItem, SectionLightWrapper },
+	components: { ShowAll, AffairItem, SectionWrapper },
 	data() {
 		return {
 			title: 'Мои успешные дела',
@@ -49,40 +51,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "assets/styles/placeholders/flex";
 @import "assets/styles/mixins/mq";
 
 .affairs {
-  &__list {
-    @extend %flex;
-    flex-direction: column;
-    row-gap: 40px;
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--indent-6);
 
-    @include mq(860px) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      column-gap: 40px;
-    }
-  }
+	@include mq(desktop) {
+		row-gap: var(--indent-10);
+	}
 
-  &__item {
-    margin: 0 auto;
+	&__list {
+		display: flex;
+		flex-direction: column;
+		row-gap: var(--indent-5);
 
-    @include mq(860px) {
-      width: calc(100% / 2 - 40px / 2);
-    }
+		@include mq(860px) {
+			flex-direction: row;
+			flex-wrap: wrap;
+			column-gap: var(--indent-5);
+		}
+	}
 
-    @include mq(large-desktop) {
-      width: calc(100% / 3 - 40px / 3 * 2);
-    }
-  }
+	&__item {
+		margin: 0 auto;
 
-  &__show-all {
-    margin-top: 50px;
+		@include mq(860px) {
+			width: calc(100% / 2 - 40px / 2);
+		}
 
-    @include mq(desktop) {
-      margin-top: 90px;
-    }
-  }
+		@include mq(large-desktop) {
+			width: calc(100% / 3 - 40px / 3 * 2);
+		}
+	}
 }
 </style>

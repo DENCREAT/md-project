@@ -5,7 +5,9 @@
 				{{ title }}
 			</h2>
 
-			<slot />
+			<div class="section__content">
+				<slot />
+			</div>
 		</div>
 	</section>
 </template>
@@ -27,16 +29,18 @@ export default {
 @import "assets/styles/mixins/font";
 
 .section {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--indent-3);
 	padding: 30px 0;
 	background: #ECF0FD;
 
 	@include mq(desktop) {
 		padding-top: 80px;
-		padding-bottom: 120px;
+		padding-bottom: 110px;
 	}
 
 	&__title {
-		margin-bottom: 25px;
 		max-width: 420px;
 		color: #1A2038;
 		text-transform: uppercase;

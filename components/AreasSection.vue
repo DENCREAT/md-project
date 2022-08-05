@@ -1,5 +1,5 @@
 <template>
-	<SectionLightWrapper
+	<SectionWrapper
 		class="areas"
 		:title="title">
 		<div class="areas__list">
@@ -9,16 +9,16 @@
 				:data="item"
 				class="areas__item" />
 		</div>
-	</SectionLightWrapper>
+	</SectionWrapper>
 </template>
 
 <script>
 import AreaItem from '~/components/AreaItem';
-import SectionLightWrapper from '~/components/SectionLightWrapper';
+import SectionWrapper from '~/components/SectionWrapper';
 
 export default {
 	name: 'Areas',
-	components: { SectionLightWrapper, AreaItem },
+	components: { SectionWrapper, AreaItem },
 	data() {
 		return {
 			title: 'Сферы практики',
