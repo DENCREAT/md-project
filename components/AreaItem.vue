@@ -43,7 +43,7 @@ export default {
 .area-item {
 	$root: &;
 
-	padding: calc(var(--base-indent) * 2);
+	padding: calc(var(--indent-2) * 2);
 	color: var(--white-color);
 	background-size: cover;
 	transition: box-shadow .13s ease;
@@ -53,7 +53,7 @@ export default {
 	}
 
 	&__title {
-		padding: calc(var(--base-indent) * 1.5) 0;
+		padding: calc(var(--indent-2) * 1.5) 0;
 		max-width: 240px;
 		text-transform: uppercase;
 

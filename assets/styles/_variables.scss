@@ -1,7 +1,11 @@
+$base-indent: 8px;
+
 :root {
   --primary-font: 'Merriweather', serif;
   --primary-color: #2A314B;
   --secondary-color: #385DF1;
+  --primary-title-text-color: #1A2038;
+  --bg-light-color: #ECF0FD;
   --white-color: #FFFFFF;
 
   --fw-light: 300;
@@ -10,6 +14,11 @@
   --fw-medium-bold: 600;
   --fw-bold: 700;
   --fw-extra-bold: 900;
-  
-  --base-indent: 16px;
+
+  --base-indent: #{$base-indent};
+
+  // generate indents --indent-n based on --base-indent
+  @for $i from 2 to 11 {
+    --indent-#{$i}: #{$i * $base-indent};
+  }
 }

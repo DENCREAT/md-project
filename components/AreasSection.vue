@@ -1,13 +1,13 @@
 <template>
-	<SectionWrapper
-		class="areas"
-		:title="title">
-		<div class="areas__list">
-			<AreaItem
-				v-for="item in areas"
-				:key="item.url"
-				:data="item"
-				class="areas__item" />
+	<SectionWrapper :title="title">
+		<div class="areas">
+			<div class="areas__list">
+				<AreaItem
+					v-for="item in areas"
+					:key="item.url"
+					:data="item"
+					class="areas__item" />
+			</div>
 		</div>
 	</SectionWrapper>
 </template>
@@ -17,7 +17,7 @@ import AreaItem from '~/components/AreaItem';
 import SectionWrapper from '~/components/SectionWrapper';
 
 export default {
-	name: 'Areas',
+	name: 'AreasSection',
 	components: { SectionWrapper, AreaItem },
 	data() {
 		return {
@@ -67,28 +67,28 @@ export default {
 
 <style lang="scss" scoped>
 @import "assets/styles/mixins/mq";
+@import "assets/styles/mixins/set-responsive-width";
 
 .areas {
-  &__list {
-    display: flex;
-    flex-direction: column;
-    row-gap: 24px;
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--indent-3);
 
-    @include mq(860px) {
-      flex-direction: row;
-      column-gap: 24px;
-      flex-wrap: wrap;
-    }
-  }
+		@include mq(860px) {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	}
 
-  &__item {
-    @include mq(860px) {
-      width: calc(100% / 2 - 24px / 2);
-    }
+	&__item {
+		@include mq(860px) {
+			@include set-responsive-width(2, var(--indent-3));
+		}
 
-    @include mq(wide) {
-      width: calc(100% / 3 - 24px / 3 * 2);
-    }
-  }
+		@include mq(wide) {
+			@include set-responsive-width(3, var(--indent-3));
+		}
+	}
 }
 </style>

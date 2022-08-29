@@ -5,23 +5,23 @@
 			:bg-from-styles="true">
 			<HomePageStarterInfo />
 		</PageStarter>
-		<Areas />
-		<AboutMe />
-		<Affairs />
+		<AreasSection />
+		<AboutMeSection />
+		<AffairsSection />
 	</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 
-import AboutMe from '~/components/AboutMe.vue';
-import Affairs from '~/components/Affairs.vue';
-import Areas from '~/components/Areas.vue';
+import AboutMeSection from '~/components/AboutMeSection.vue';
+import AffairsSection from '~/components/AffairsSection.vue';
+import AreasSection from '~/components/AreasSection.vue';
 import HomePageStarterInfo from '~/components/HomePageStarterInfo.vue';
 import PageStarter from '~/components/PageStarter.vue';
 
 export default Vue.extend({
 	name: 'Index',
-	components: { Affairs, Areas, AboutMe, HomePageStarterInfo, PageStarter },
+	components: { AffairsSection, AreasSection, AboutMeSection, HomePageStarterInfo, PageStarter },
 });
 </script>

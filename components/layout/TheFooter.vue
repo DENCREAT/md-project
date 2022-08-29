@@ -1,11 +1,11 @@
 <template>
 	<div class="footer">
 		<div class="container footer__inner">
-			<div class="footer__column footer__column_logo">
+			<div class="footer__column footer__column--logo">
 				<Logo :variant="logoTypes.BIG" />
 			</div>
 
-			<div class="footer__column footer__column_main-nav">
+			<div class="footer__column footer__column--main-nav">
 				<nav>
 					<ul class="footer__nav">
 						<li
@@ -20,7 +20,7 @@
 				</nav>
 			</div>
 
-			<div class="footer__column footer__column_nav">
+			<div class="footer__column footer__column--nav">
 				<nav>
 					<ul class="footer__nav">
 						<li
@@ -34,7 +34,7 @@
 					</ul>
 				</nav>
 			</div>
-			<div class="footer__column footer__column_privacy">
+			<div class="footer__column footer__column--privacy">
 				<a
 					href="#"
 					class="footer__nav-link simple footer__privacy-link">Конфиденциальность и <br>безопасность</a>
@@ -42,15 +42,17 @@
 					{{ copyright }}
 				</p>
 			</div>
-			<div class="footer__column footer__column_contact">
+			<div class="footer__column footer__column--contacts">
 				<div class="footer__contact">
 					<a
 						href="tel:+79533435353"
 						class="footer__phone">+7 (953) 343 53 53</a>
-					<p
+					<address
 						class="footer__address"
 						v-html="address" />
 				</div>
+
+				<SocialList class="footer__social" />
 			</div>
 		</div>
 	</div>
@@ -68,9 +70,10 @@ export default Vue.extend({
 	components: { Logo },
 	data() {
 		return {
+			/* eslint-disable max-len */
 			logoTypes: LogoTypes,
 			copyright: '© «MIHAYLOVSKY», 2012 - 2021',
-			address: '190005, г. Санкт - Петербург,<br> Измайловский проспеет,<br>18д, офис 27 Н<br>(м. Технологический институт-1)',
+			address: '191011, г. Санкт-Петербург, Невский проспект, д. 30/канал Грибоедова, д. 16 (Бизнес-центр "Невский 30")',
 			navItems: [
 				{
 					title: 'Главная страница',
@@ -174,7 +177,7 @@ export default Vue.extend({
 	}
 
 	&__column {
-		&_privacy {
+		&--privacy {
 			display: flex;
 			flex-direction: column;
 			margin-top: 33px;
@@ -189,28 +192,39 @@ export default Vue.extend({
 			}
 		}
 
-		&_nav,
-		&_main-nav {
+		&--nav,
+		&--main-nav {
 			display: none;
 		}
 
-		&_nav {
+		&--nav {
 			@include mq(1366px) {
 				display: flex;
 			}
 		}
 
-		&_main-nav {
+		&--main-nav {
 			@include mq(large-tablet) {
 				display: flex;
 			}
 		}
 
-		&_logo {
+		&--logo {
 			margin-bottom: 25px;
 
 			@include mq(large-tablet) {
 				margin-bottom: 0;
+			}
+		}
+
+		&--contacts {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+
+			@include mq(large-tablet) {
+				align-items: flex-end;
 			}
 		}
 	}
@@ -236,21 +250,37 @@ export default Vue.extend({
 	}
 
 	&__copyright {
-		margin-bottom: 35px;
+		margin-bottom: var(--base-indent);
+		margin-top: var(--indent-3);
 		color: #9298AE;
 
 		@include font(10, regular);
+
+		@include mq(large-tablet) {
+			margin-top: 0;
+		}
 	}
 
 	&__address {
-		margin-top: 28px;
+		margin-top: var(--indent-4);
 		color: var(--white-color);
 		text-align: center;
+		font-style: initial;
+		max-width: 410px;
 
-		@include font(12, bold);
+		@include font(12, bold, 1.4);
 
 		@include mq(large-tablet) {
+			max-width: 230px;
 			text-align: right;
+		}
+	}
+
+	&__social {
+		margin-top: var(--indent-4);
+
+		@include mq(large-tablet) {
+			margin-top: 0;
 		}
 	}
 }

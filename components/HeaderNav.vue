@@ -32,24 +32,24 @@ export default Vue.extend({
 				},
 				{
 					title: 'Обо мне',
-					url: '/',
+					url: '/about-us',
 				},
 				{
 					title: 'Юридические услуги',
-					url: '/',
+					url: '/services',
 				},
 				{
 					title: 'Успешные дела',
-					url: '/',
+					url: '/affairs',
 				},
 				{
 					title: 'Про боно',
-					url: '/',
+					url: '/bono',
 					forHidden: true,
 				},
 				{
 					title: 'Блог',
-					url: '/',
+					url: '/blog',
 					forHidden: true,
 				},
 				{

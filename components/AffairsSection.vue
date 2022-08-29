@@ -1,6 +1,5 @@
 <template>
-	<SectionWrapper
-		:title="title">
+	<SectionWrapper :title="title">
 		<div class="affairs">
 			<div class="affairs__list">
 				<AffairItem
@@ -23,7 +22,7 @@ import SectionWrapper from '~/components/SectionWrapper';
 import ShowAll from '~/components/ShowAll';
 
 export default {
-	name: 'Affairs',
+	name: 'AffairsSection',
 	components: { ShowAll, AffairItem, SectionWrapper },
 	data() {
 		return {
@@ -52,6 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "assets/styles/mixins/mq";
+@import "assets/styles/mixins/set-responsive-width";
 
 .affairs {
 	display: flex;
@@ -78,11 +78,11 @@ export default {
 		margin: 0 auto;
 
 		@include mq(860px) {
-			width: calc(100% / 2 - 40px / 2);
+			@include set-responsive-width(2, var(--indent-5));
 		}
 
 		@include mq(large-desktop) {
-			width: calc(100% / 3 - 40px / 3 * 2);
+			@include set-responsive-width(3, var(--indent-5));
 		}
 	}
 }

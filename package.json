@@ -10,9 +10,9 @@
     "lint": "eslint --fix --ext .js,.vue,.ts --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@babel/core": "^7.18.9",
+    "@babel/core": "^7.18.13",
     "@nuxtjs/axios": "^5.13.6",
-    "core-js": "^3.15.1",
+    "core-js": "^3.25.0",
     "lodash": "^4.17.21",
     "nth-check": "^2.1.1",
     "nuxt": "^2.15.8",
@@ -27,19 +27,24 @@
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@nuxtjs/eslint-module": "^3.1.0",
     "@types/browserslist": "^4.15.0",
-    "@types/lodash": "^4.14.182",
-    "@typescript-eslint/parser": "^5.32.0",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@types/lodash": "^4.14.184",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
     "@vue/eslint-config-standard": "^8.0.1",
-    "eslint": "^8.20.0",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-vue": "^9.3.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "fibers": "^5.0.0",
+    "eslint-plugin-vue": "^9.4.0",
+    "fibers": "^5.0.2",
+    "nuxt-vite": "^0.2.4",
+    "postcss-preset-env": "^7.8.0",
     "prettier": "^2.7.1",
-    "sass": "^1.54.0",
+    "sass": "^1.54.5",
     "sass-loader": "10.1.1"
+  },
+  "overrides": {
+    "rollup": "2.74.1"
   }
 }

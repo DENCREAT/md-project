@@ -2,7 +2,7 @@
 	<section
 		class="about-me"
 		:style="{ ...bgStyles }">
-		<div class="container about-me__inner">
+		<div class="container about-me__container">
 			<div class="about-me__column">
 				<div class="about-me__subtitle">
 					{{ subtitle }}
@@ -44,6 +44,10 @@
 					{{ contactsBtnText }}
 				</MDBtn>
 			</div>
+
+			<SocialList
+				class="about-me__social"
+				:vertical="true" />
 		</div>
 	</section>
 </template>
@@ -51,7 +55,7 @@
 
 <script>
 export default {
-	name: 'AboutMe',
+	name: 'AboutMeSection',
 	props: {
 		bgUrl: {
 			type: String,
@@ -90,7 +94,8 @@ export default {
 .about-me {
 	color: var(--white-color);
 
-	&__inner {
+	&__container {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		padding-top: 40px;
@@ -227,6 +232,11 @@ export default {
 
 	&__more-btn {
 		flex-grow: 1;
+	}
+
+	&__social {
+		position: absolute;
+		right: -64px;
 	}
 }
 </style>

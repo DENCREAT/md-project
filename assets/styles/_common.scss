@@ -25,7 +25,21 @@ body {
 }
 
 .container {
-	padding: 0 var(--base-indent);
+	padding: 0 var(--indent-2);
 	max-width: 1520px;
 	margin: 0 auto;
+}
+
+.first-section {
+	margin-top: 180px;
+}
+
+.page-wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	&__content {
+		flex-grow: 1;
+	}
 }

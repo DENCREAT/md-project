@@ -24,15 +24,3 @@ export default Vue.extend({
 	},
 });
 </script>
-
-<style lang="scss" scoped>
-	.page-wrapper {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-
-		&__content {
-			flex-grow: 1;
-		}
-	}
-</style>
