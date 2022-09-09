@@ -3,9 +3,14 @@
 		class="section"
 		:class="`section--${theme}`">
 		<div class="container section__container">
-			<h2 class="section__title">
-				{{ title }}
-			</h2>
+			<slot name="title">
+				<SectionTitle
+					:theme="theme"
+					:title="title"
+					:fluid="titleFluid"
+					:center="titleCenter"
+					class="section__title" />
+			</slot>
 
 			<div class="section__content">
 				<slot />
@@ -17,24 +22,26 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 
+import SectionTitle from '~/components/SectionTitle.vue';
 import { SectionTheme } from '~/enums';
 
 export default Vue.extend({
 	name: 'SectionWrapper',
+	components: { SectionTitle },
 	props: {
 		title: String,
 		theme: {
 			type: String as PropType<SectionTheme>,
 			default: SectionTheme.LIGHT,
 		},
+		titleFluid: Boolean,
+		titleCenter: Boolean,
 	},
 });
 </script>
 
 <style lang="scss" scoped>
 @import "assets/styles/mixins/mq";
-@import "assets/styles/mixins/font";
-@import "assets/styles/mixins/size";
 
 .section {
 	$root: &;
@@ -63,48 +70,12 @@ export default Vue.extend({
 		}
 	}
 
-	&__title {
-		max-width: 420px;
-		text-transform: uppercase;
-
-		@include font(24, bold);
-
-		@include mq(large-mobile) {
-			@include font(30);
-		}
-
-		@include mq(desktop) {
-			@include font(32);
-		}
-
-		&:after {
-			content: '';
-			margin-top: var(--indent-3);
-			display: block;
-			border-radius: 4px;
-
-			@include size(100%, 4px);
-		}
-	}
-
-	@mixin set-section-theme($bg, $color, $border) {
-		background-color: var($bg);
-
-		#{$root}__title {
-			color: var($color);
-
-			&::after {
-				background-color: var($border);
-			}
-		}
-	}
-
 	&--light {
-		@include set-section-theme(--bg-light-color, --primary-title-text-color, --secondary-color);
+		background-color: var(--bg-light-color);
 	}
 
 	&--accent {
-		@include set-section-theme(--secondary-color, --white-color, --white-color);
+		background-color: var(--secondary-color);
 	}
 }
 </style>

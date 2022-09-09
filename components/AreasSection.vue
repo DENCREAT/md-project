@@ -4,7 +4,7 @@
 			<div class="areas__list">
 				<AreaItem
 					v-for="item in areas"
-					:key="item.url"
+					:key="item.title"
 					:data="item"
 					class="areas__item" />
 			</div>

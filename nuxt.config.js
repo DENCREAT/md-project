@@ -1,9 +1,9 @@
 export default {
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
-		title: 'MD Project',
+		title: 'Михайловский - юридические услуги',
 		htmlAttrs: {
-			lang: 'en',
+			lang: 'ru',
 		},
 		meta: [
 			{ charset: 'utf-8' },
@@ -22,7 +22,7 @@ export default {
 	],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-	plugins: [],
+	plugins: ['~/plugins/breakpoint-observer.plugin.ts'],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,

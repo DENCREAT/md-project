@@ -3,6 +3,10 @@
 		width: 100%;
 	}
 
+	@else if $column-gap == 0 {
+		width: calc(100% / #{$column-count});
+	}
+
 	@else {
 		width: calc((100% - #{$column-gap} * (#{$column-count} - 1)) / #{$column-count});
 	}

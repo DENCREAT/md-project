@@ -18,7 +18,7 @@ $base-indent: 8px;
   --base-indent: #{$base-indent};
 
   // generate indents --indent-n based on --base-indent
-  @for $i from 2 to 11 {
+  @for $i from 2 to 15 {
     --indent-#{$i}: #{$i * $base-indent};
   }
 }

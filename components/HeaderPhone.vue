@@ -1,8 +1,6 @@
 <template>
 	<div class="wrapper">
-		<a
-			class="phone"
-			href="tel:+79533435353">+7 (953) 343 53 53</a>
+		<PhoneLink />
 
 		<a
 			class="action"
@@ -11,8 +9,10 @@
 </template>
 <script>
 
+import PhoneLink from '~/components/PhoneLink';
 export default {
 	name: 'HeaderPhone',
+	components: { PhoneLink },
 };
 </script>
 
@@ -22,12 +22,6 @@ export default {
 .wrapper {
 	display: flex;
 	flex-direction: column;
-}
-
-.phone {
-	white-space: nowrap;
-
-	@include font(15, bold);
 }
 
 .action {

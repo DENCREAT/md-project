@@ -4,7 +4,7 @@ import mixins from 'vue-typed-mixins';
 import { Breakpoints } from '~/enums/Breakpoints';
 import { BREAKPOINTS_CONFIG } from '~/enums/BreakpointsConfig';
 
-export const breakpointObserver = mixins().extend({
+export const breakpointObserverMixin = mixins().extend({
 	data() {
 		return {
 			observerDebounceFunction: (e: Event) => {},

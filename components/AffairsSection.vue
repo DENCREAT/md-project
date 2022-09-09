@@ -4,7 +4,7 @@
 			<div class="affairs__list">
 				<AffairItem
 					v-for="item in affairs"
-					:key="item.url"
+					:key="item.title"
 					:data="item"
 					class="affairs__item" />
 			</div>

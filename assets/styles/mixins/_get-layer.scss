@@ -1,0 +1,13 @@
+$layers: (
+	initial: 1,
+	negative: -1,
+	normal: 0
+);
+
+@function get-layer($_layer-name) {
+	@if map-has-key($layers, $_layer-name) {
+		@return map-get($layers, $_layer-name);
+	}
+
+	@return auto;
+}

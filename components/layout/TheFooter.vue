@@ -10,7 +10,7 @@
 					<ul class="footer__nav">
 						<li
 							v-for="item in navItems"
-							:key="item.url"
+							:key="item.title"
 							class="footer__nav-item">
 							<a
 								:href="item.url"
@@ -25,7 +25,7 @@
 					<ul class="footer__nav">
 						<li
 							v-for="item in addNavItems"
-							:key="item.url"
+							:key="item.title"
 							class="footer__nav-item">
 							<a
 								:href="item.url"
@@ -44,9 +44,8 @@
 			</div>
 			<div class="footer__column footer__column--contacts">
 				<div class="footer__contact">
-					<a
-						href="tel:+79533435353"
-						class="footer__phone">+7 (953) 343 53 53</a>
+					<PhoneLink :big="true" />
+
 					<address
 						class="footer__address"
 						v-html="address" />
@@ -62,12 +61,14 @@
 import Vue from 'vue';
 
 import Logo from '~/components/Logo.vue';
+import PhoneLink from '~/components/PhoneLink.vue';
+import SocialList from '~/components/SocialList.vue';
 import { LogoTypes } from '~/enums';
 import { NavigationItem } from '~/interfaces';
 
 export default Vue.extend({
 	name: 'TheFooter',
-	components: { Logo },
+	components: { SocialList, PhoneLink, Logo },
 	data() {
 		return {
 			/* eslint-disable max-len */
@@ -231,12 +232,6 @@ export default Vue.extend({
 
 	&__privacy-link {
 		@include font(12, medium);
-	}
-
-	&__phone {
-		display: inline-flex;
-
-		@include font(18, bold);
 	}
 
 	&__contact {
