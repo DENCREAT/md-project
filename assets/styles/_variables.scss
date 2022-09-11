@@ -3,10 +3,13 @@ $base-indent: 8px;
 :root {
   --primary-font: 'Merriweather', serif;
   --primary-color: #2A314B;
+  --primary-light-color: #3F4868;
   --secondary-color: #385DF1;
-  --primary-title-text-color: #1A2038;
+  --primary-text-color: #1A2038;
   --bg-light-color: #ECF0FD;
   --white-color: #FFFFFF;
+  --form-control-border-color: #A4B1E3;
+  --form-control-placeholder-color: #8B97C3;
 
   --fw-light: 300;
   --fw-regular: 400;
@@ -14,6 +17,12 @@ $base-indent: 8px;
   --fw-medium-bold: 600;
   --fw-bold: 700;
   --fw-extra-bold: 900;
+
+  --control-height: 54px;
+
+  @media screen and (min-width: 768px) {
+    --control-height: 60px;
+  }
 
   --base-indent: #{$base-indent};
 

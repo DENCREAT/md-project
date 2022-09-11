@@ -11,30 +11,29 @@
 		</div>
 
 		<div class="wrapper-bottom">
-			<MDBtn class="home-page-starter-info__cta-btn">
+			<BaseButton class="home-page-starter-info__cta-btn">
 				{{ btnText }}
-			</MDBtn>
+			</BaseButton>
 
 			<div class="home-page-starter-info__add-info">
 				{{ addInfo }}
 			</div>
 
-			<div class="home-page-starter-info__achievements">
-				<HomePageAchievement
-					v-for="achievement in achievements"
-					:key="achievement.id"
-					:achievement="achievement" />
-			</div>
+			<AchievementList class="home-page-starter-info__achievements" />
 		</div>
 	</div>
 </template>
-<script>
 
-import HomePageAchievement from '~/components/HomePageAchievement';
+<script lang="ts">
+// noinspection NpmUsedModulesInstalled
+import Vue from 'vue';
 
-export default {
+import AchievementList from '~/components/AchievementList.vue';
+import BaseButton from '~/components/base/BaseButton.vue';
+
+export default Vue.extend({
 	name: 'HomePageStarterInfo',
-	components: { HomePageAchievement },
+	components: { AchievementList, BaseButton },
 	data() {
 		return {
 			/* eslint-disable max-len */
@@ -42,26 +41,9 @@ export default {
 			description: 'Мы успешно оказываем юридическую помощь в области семейного, административного, жилищного, гражданского и уголовного права',
 			addInfo: 'Получите детальный анализ вашей ситуаци и план по ее разрешению совершенно бесплатно',
 			btnText: 'Записаться на консультацию',
-			achievements: [
-				{
-					count: '15',
-					comment: 'лет',
-					text: 'успешной работы',
-				},
-				{
-					count: '60+',
-					comment: '',
-					text: 'консультаций в месяц',
-				},
-				{
-					count: '250',
-					comment: 'дел',
-					text: 'в пользу наших клиентов',
-				},
-			],
 		};
 	},
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -135,23 +117,12 @@ export default {
 		}
 	}
 
-	&__achievements {
-		display: flex;
-		max-width: 460px;
-		margin-top: 65px;
-		column-gap: 5%;
-
-		@include mq(large-mobile) {
-			@include font(30);
-		}
-
-		@include mq(tablet) {
-			column-gap: 60px;
-		}
-	}
-
 	&__cta-btn {
 		margin-top: 38px;
+	}
+
+	&__achievements {
+		margin-top: 65px;
 	}
 }
 

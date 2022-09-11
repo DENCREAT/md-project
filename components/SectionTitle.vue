@@ -4,11 +4,15 @@
 		:class="{
 			'section-title--fluid': fluid,
 			'section-title--center': center,
+			'section-title--uppercase': uppercase,
 			[`section-title--${theme}`]: !!theme,
-			[`section-title--${tag}`]: !!tag
+			[`section-title--${tag}`]: !!tag,
 		}"
 		class="section-title">
-		{{ title }}
+		<span v-html="title" />
+		<div
+			class="section-title__line"
+			:style="lineStyles" />
 	</component>
 </template>
 
@@ -16,6 +20,7 @@
 import Vue, { PropType } from 'vue';
 
 import { SectionTheme, TitleTag } from '~/enums';
+import { CssRuleset } from '~/types';
 
 export default Vue.extend({
 	name: 'SectionTitle',
@@ -23,6 +28,10 @@ export default Vue.extend({
 		title: String,
 		fluid: Boolean,
 		center: Boolean,
+		uppercase: {
+			type: Boolean,
+			default: true,
+		},
 		theme: {
 			type: String as PropType<SectionTheme>,
 			default: SectionTheme.LIGHT,
@@ -30,6 +39,10 @@ export default Vue.extend({
 		tag: {
 			type: String as PropType<TitleTag>,
 			default: TitleTag.H2,
+		},
+		lineStyles: {
+			type: Object as PropType<CssRuleset>,
+			default: () => ({}),
 		},
 	},
 });
@@ -40,22 +53,22 @@ export default Vue.extend({
 @import "assets/styles/mixins/mq";
 @import "assets/styles/mixins/size";
 
-@mixin set-section-title-theme($color, $border) {
+@mixin set-section-title-theme($color, $line-color, $parent) {
 	color: var($color);
 
-	&::after {
-		background-color: var($border);
+	#{$parent}__line {
+		background-color: var($line-color);
 	}
 }
 
 .section-title {
+	$root: &;
 	--line-size: initial;
+
 	max-width: 420px;
 
-	&:after {
-		content: '';
+	&__line {
 		margin-top: var(--indent-3);
-		display: block;
 		border-radius: var(--line-size);
 
 		@include size(100%, #{var(--line-size)});
@@ -63,7 +76,6 @@ export default Vue.extend({
 
 	&--h2 {
 		--line-size: 4px;
-		text-transform: uppercase;
 
 		@include font(24, bold);
 
@@ -82,6 +94,10 @@ export default Vue.extend({
 		@include font(22, bold);
 	}
 
+	&--uppercase {
+		text-transform: uppercase;
+	}
+
 	&--fluid {
 		max-width: none;
 	}
@@ -91,11 +107,11 @@ export default Vue.extend({
 	}
 
 	&--light {
-		@include set-section-title-theme(--primary-title-text-color, --secondary-color);
+		@include set-section-title-theme(--primary-text-color, --secondary-color, $root);
 	}
 
 	&--accent {
-		@include set-section-title-theme(--white-color, --white-color);
+		@include set-section-title-theme(--white-color, --white-color, $root);
 	}
 }
 </style>

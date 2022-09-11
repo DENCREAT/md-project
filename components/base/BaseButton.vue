@@ -1,5 +1,10 @@
 <template>
-	<button class="btn">
+	<button
+		class="base-button"
+		:class="{
+			'base-button--fluid': fluid,
+			'base-button--inverse': inverse,
+		}">
 		<slot />
 	</button>
 </template>
@@ -8,7 +13,11 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-	name: 'MDBtn',
+	name: 'BaseButton',
+	props: {
+		fluid: Boolean,
+		inverse: Boolean,
+	},
 });
 </script>
 
@@ -17,8 +26,8 @@ export default Vue.extend({
 @import "assets/styles/mixins/font";
 @import "assets/styles/mixins/mq";
 
-.btn {
-	height: 60px;
+.base-button {
+	height: var(--control-height);
 	border: 1px solid transparent;
 	outline: none;
 	background: var(--secondary-color);
@@ -30,12 +39,17 @@ export default Vue.extend({
 	white-space: nowrap;
 	cursor: pointer;
 	transition: all .13s ease-in-out;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
 	@include flex-center;
 	@include font(14, extra-bold);
 
 	@include mq(tablet) {
 		@include font(18);
+	}
+
+	&--fluid {
+		width: 100%;
 	}
 
 	&--inverse {

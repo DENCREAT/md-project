@@ -1,2 +1,2 @@
 export { NavigationItem } from './Navigation';
-export { StyleRuleset } from './StyleRuleset';
+export { Achievement } from './Achievement';

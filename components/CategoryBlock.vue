@@ -8,6 +8,7 @@
 			<SectionTitle
 				:tag="TitleTag.H3"
 				:theme="SectionTheme.ACCENT"
+				:uppercase="false"
 				:title="data.title" />
 		</div>
 

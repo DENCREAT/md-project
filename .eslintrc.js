@@ -88,6 +88,7 @@ module.exports = {
 		'vue/html-indent': ['error', 'tab'],
 		'vue/require-default-prop': 0,
 		'vue/no-v-html': 0,
+		'vue/no-v-text-v-html-on-component': 0,
 		'vue/no-v-model-argument': 0,
 		'vue/order-in-components': ['error', {
 			order: [

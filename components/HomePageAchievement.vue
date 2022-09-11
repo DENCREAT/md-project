@@ -8,15 +8,19 @@
 		</div>
 	</div>
 </template>
-<script>
+
+<script lang="ts">
+import { PropType } from 'vue';
+
+import { Achievement } from '~/interfaces';
+import { WithId } from '~/utils/addId';
 
 export default {
 	name: 'HomePageAchievement',
 	props: {
 		achievement: {
-			type: Object,
-			default: () => {
-			},
+			type: Object as PropType<WithId<Achievement>>,
+			required: true,
 		},
 	},
 };

@@ -1,0 +1,6 @@
+@mixin autofill($bg-color, $color) {
+	&:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0 100rem $bg-color inset !important;
+		-webkit-text-fill-color: $color !important;
+	}
+}

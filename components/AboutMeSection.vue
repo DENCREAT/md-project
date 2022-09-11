@@ -17,13 +17,13 @@
 					v-html="text" />
 
 				<div class="about-me__buttons about-me__buttons--desktop">
-					<MDBtn class="about-me__more-btn">
+					<BaseButton class="about-me__more-btn">
 						{{ moreBtnText }}
-					</MDBtn>
+					</BaseButton>
 
-					<MDBtn class="btn--inverse about-me__contacts-btn">
+					<BaseButton class="btn--inverse about-me__contacts-btn">
 						{{ contactsBtnText }}
-					</MDBtn>
+					</BaseButton>
 				</div>
 			</div>
 
@@ -36,13 +36,15 @@
 			</div>
 
 			<div class="about-me__buttons about-me__buttons--mobile">
-				<MDBtn class="about-me__more-btn">
+				<BaseButton class="about-me__more-btn">
 					{{ moreBtnText }}
-				</MDBtn>
+				</BaseButton>
 
-				<MDBtn class="btn--inverse about-me__contacts-btn">
+				<BaseButton
+					:inverse="true"
+					class="about-me__contacts-btn">
 					{{ contactsBtnText }}
-				</MDBtn>
+				</BaseButton>
 			</div>
 
 			<SocialList
@@ -52,10 +54,14 @@
 	</section>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
 
-<script>
-export default {
+import BaseButton from '~/components/base/BaseButton.vue';
+
+export default Vue.extend({
 	name: 'AboutMeSection',
+	components: { BaseButton },
 	props: {
 		bgUrl: {
 			type: String,
@@ -83,7 +89,7 @@ export default {
 			};
 		},
 	},
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -174,7 +180,7 @@ export default {
 	}
 
 	&__text {
-		&:deep(p) {
+		&::v-deep p {
 			display: block;
 			margin-bottom: 30px;
 			text-align: center;

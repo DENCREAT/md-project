@@ -5,6 +5,7 @@
 		<div class="container section__container">
 			<slot name="title">
 				<SectionTitle
+					v-if="title"
 					:theme="theme"
 					:title="title"
 					:fluid="titleFluid"
@@ -36,6 +37,7 @@ export default Vue.extend({
 		},
 		titleFluid: Boolean,
 		titleCenter: Boolean,
+		noIndents: Boolean,
 	},
 });
 </script>

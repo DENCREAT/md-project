@@ -43,3 +43,26 @@ body {
 		flex-grow: 1;
 	}
 }
+
+.base-text-control {
+	font-family: inherit;
+	padding: var(--indent-2);
+	color: var(--form-control-placeholder-color);
+	border: 1px solid var(--form-control-border-color);
+	background-color: var(--primary-light-color);
+	outline: none;
+	transition: background-color .13s ease-in-out;
+
+	@include font(16, bold);
+
+	@include placeholder() {
+		color: var(--form-control-placeholder-color);
+	}
+
+	@include autofill(var(--white-color), var(--primary-text-color));
+
+	&:focus, &:active {
+		color: var(--primary-text-color);
+		background-color: var(--white-color);
+	}
+}

@@ -144,7 +144,7 @@ export default Vue.extend({
 
 .footer {
 	padding: 30px 0;
-	background-color: #3F4868;
+	background-color: var(--primary-light-color);
 
 	&__inner {
 		flex-direction: column;

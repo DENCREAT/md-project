@@ -6,9 +6,9 @@
 			{{ data.title }}
 		</div>
 		<div class="area-item__footer">
-			<MDBtn class="btn--transparent area-item__btn">
+			<BaseButton class="btn--transparent area-item__btn">
 				Узнать больше
-			</MDBtn>
+			</BaseButton>
 
 			<i class="area-item__icon">
 				<img
@@ -19,10 +19,12 @@
 	</div>
 </template>
 
+<script lang="ts">
+import BaseButton from '~/components/base/BaseButton.vue';
 
-<script>
 export default {
 	name: 'AreaItem',
+	components: { BaseButton },
 	props: {
 		data: {
 			type: Object,

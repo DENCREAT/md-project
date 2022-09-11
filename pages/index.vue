@@ -8,7 +8,8 @@
 		<AreasSection />
 		<AboutMeSection />
 		<AffairsSection />
-		<ServicesSection />
+		<CategoriesSection />
+		<LeadGenerationSection />
 	</div>
 </template>
 
@@ -18,12 +19,21 @@ import Vue from 'vue';
 import AboutMeSection from '~/components/AboutMeSection.vue';
 import AffairsSection from '~/components/AffairsSection.vue';
 import AreasSection from '~/components/AreasSection.vue';
-import ServicesSection from '~/components/CategoriesSection.vue';
+import CategoriesSection from '~/components/CategoriesSection.vue';
 import HomePageStarterInfo from '~/components/HomePageStarterInfo.vue';
+import LeadGenerationSection from '~/components/LeadGenerationSection.vue';
 import PageStarter from '~/components/PageStarter.vue';
 
 export default Vue.extend({
 	name: 'Index',
-	components: { ServicesSection, AffairsSection, AreasSection, AboutMeSection, HomePageStarterInfo, PageStarter },
+	components: {
+		LeadGenerationSection,
+		CategoriesSection,
+		AffairsSection,
+		AreasSection,
+		AboutMeSection,
+		HomePageStarterInfo,
+		PageStarter,
+	},
 });
 </script>
