@@ -5,6 +5,7 @@
 		<div class="area-item__title">
 			{{ data.title }}
 		</div>
+
 		<div class="area-item__footer">
 			<BaseButton class="btn--transparent area-item__btn">
 				Узнать больше
@@ -45,6 +46,8 @@ export default {
 .area-item {
 	$root: &;
 
+	display: flex;
+	flex-direction: column;
 	padding: calc(var(--indent-2) * 2);
 	color: var(--white-color);
 	background-size: cover;
@@ -55,6 +58,7 @@ export default {
 	}
 
 	&__title {
+		flex-grow: 1;
 		padding: calc(var(--indent-2) * 1.5) 0;
 		max-width: 240px;
 		text-transform: uppercase;

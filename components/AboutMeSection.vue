@@ -48,8 +48,9 @@
 			</div>
 
 			<SocialList
-				class="about-me__social"
-				:vertical="true" />
+				:gap="device.isMobile ? 'var(--indent-7)' : undefined"
+				:vertical="!device.isMobile"
+				class="about-me__social" />
 		</div>
 	</section>
 </template>
@@ -58,10 +59,11 @@
 import Vue from 'vue';
 
 import BaseButton from '~/components/base/BaseButton.vue';
+import SocialList from '~/components/SocialList.vue';
 
 export default Vue.extend({
 	name: 'AboutMeSection',
-	components: { BaseButton },
+	components: { BaseButton, SocialList },
 	props: {
 		bgUrl: {
 			type: String,
@@ -109,9 +111,13 @@ export default Vue.extend({
 
 		@include mq(desktop) {
 			padding-top: 120px;
-			padding-bottom: 170px;
+			padding-bottom: 100px;
 			flex-direction: row;
 			column-gap: 12%;
+		}
+
+		@include mq(large-desktop) {
+
 		}
 	}
 
@@ -241,8 +247,24 @@ export default Vue.extend({
 	}
 
 	&__social {
-		position: absolute;
-		right: -64px;
+		margin: var(--indent-3) auto 0;
+
+		@include mq(tablet) {
+			position: absolute;
+			right: var(--indent-2);
+			bottom: 514px;
+			margin: 0;
+		}
+
+		@include mq(desktop) {
+			bottom: 100px;
+		}
+
+		@include mq(wide) {
+			right: calc(var(--indent-4) * -1);
+			bottom: auto;
+			top: 120px;
+		}
 	}
 }
 </style>

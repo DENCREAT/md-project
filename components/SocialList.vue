@@ -1,6 +1,7 @@
 <template>
 	<div
 		class="social"
+		:style="{ gap }"
 		:class="{ 'social--vertical': vertical }">
 		<a
 			v-for="{ name, url, code } in items"
@@ -27,6 +28,10 @@ export default Vue.extend({
 			type: Boolean,
 			default: false,
 		},
+		gap: {
+			type: String,
+			default: '10px',
+		},
 	},
 	data() {
 		return {
@@ -39,7 +44,7 @@ export default Vue.extend({
 				},
 				{
 					name: 'WhatsApp',
-					code: 'watsup',
+					code: 'whatsapp',
 					url: 'https://wa.me/79990204000',
 				},
 				{
@@ -63,8 +68,6 @@ export default Vue.extend({
 @import 'assets/styles/mixins/size';
 
 .social {
-	gap: 10px;
-
 	@include flex-v-center;
 
 	&--vertical {

@@ -6,7 +6,7 @@
 					:variant="logoTypes.GRAY"
 					class="header__logo" />
 
-				<HeaderNav class="header__desktop-nav" />
+				<MainMenu class="header__desktop-nav" />
 
 				<div class="header__wrapper-right">
 					<HeaderPhone class="header__phone" />
@@ -16,19 +16,19 @@
 		</div>
 	</div>
 </template>
-<script lang="ts">
 
+<script lang="ts">
 import Vue from 'vue';
 
-import HeaderNav from '~/components/HeaderNav.vue';
 import HeaderPhone from '~/components/HeaderPhone.vue';
 import Logo from '~/components/Logo.vue';
+import MainMenu from '~/components/MainMenu.vue';
 import MobileMenuBtn from '~/components/MobileMenuBtn.vue';
 import { LogoTypes } from '~/enums';
 
 export default Vue.extend({
 	name: 'TheHeader',
-	components: { MobileMenuBtn, HeaderPhone, Logo, HeaderNav },
+	components: { MobileMenuBtn, HeaderPhone, Logo, MainMenu },
 	data() {
 		return {
 			logoTypes: LogoTypes,

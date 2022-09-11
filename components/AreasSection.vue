@@ -24,7 +24,7 @@ export default {
 			title: 'Сферы практики',
 			areas: [
 				{
-					title: 'Сфера дененежных обязательствв',
+					title: 'Защита прав автовладельцев\n',
 					url: '/',
 					bgUrl: '/images/area.jpg',
 					iconUrl: '/images/area-icon.svg',
@@ -42,19 +42,19 @@ export default {
 					iconUrl: '/images/area-icon.svg',
 				},
 				{
-					title: 'Сфера семейных правоотношений',
+					title: 'Гражданские и иные дела',
 					url: '/',
 					bgUrl: '/images/area.jpg',
 					iconUrl: '/images/area-icon.svg',
 				},
 				{
-					title: 'Сфера защиты прав автовладельцев',
+					title: 'Семейные правоотношения\n',
 					url: '/',
 					bgUrl: '/images/area.jpg',
 					iconUrl: '/images/area-icon.svg',
 				},
 				{
-					title: 'Сфера уголовных и иных дел',
+					title: 'Сфера денежных обязательств\n',
 					url: '/',
 					bgUrl: '/images/area.jpg',
 					iconUrl: '/images/area-icon.svg',

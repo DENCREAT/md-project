@@ -21,6 +21,11 @@
 
 			<AchievementList class="home-page-starter-info__achievements" />
 		</div>
+
+		<SocialList
+			v-if="!device.isMobile"
+			:vertical="device.isDesktop || device.isLargeDesktop || device.isWide"
+			class="home-page-starter-info__social" />
 	</div>
 </template>
 
@@ -30,10 +35,11 @@ import Vue from 'vue';
 
 import AchievementList from '~/components/AchievementList.vue';
 import BaseButton from '~/components/base/BaseButton.vue';
+import SocialList from '~/components/SocialList.vue';
 
 export default Vue.extend({
 	name: 'HomePageStarterInfo',
-	components: { AchievementList, BaseButton },
+	components: { SocialList, AchievementList, BaseButton },
 	data() {
 		return {
 			/* eslint-disable max-len */
@@ -123,6 +129,23 @@ export default Vue.extend({
 
 	&__achievements {
 		margin-top: 65px;
+	}
+
+	&__social {
+		@include mq(tablet) {
+			margin-top: var(--indent-6);
+		}
+
+		@include mq(desktop) {
+			margin-top: 0;
+			position: absolute;
+			bottom: 0;
+			right: var(--indent-2);
+		}
+
+		@include mq(wide) {
+			bottom: 60px;
+		}
 	}
 }
 
