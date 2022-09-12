@@ -1,21 +1,23 @@
 <template>
-	<SectionWrapper
-		v-if="hasCategories"
-		:title="title"
-		:title-fluid="true"
-		:title-center="!device.isMobile"
-		:theme="SectionTheme.ACCENT"
-		class="categories">
-		<div class="categories__list">
-			<CategoriesSectionBg class="categories__list-bg" />
+	<div>
+		<SectionWrapper
+			v-if="hasCategories"
+			:title="title"
+			:title-fluid="true"
+			:title-center="!device.isMobile"
+			:theme="SectionTheme.ACCENT"
+			class="categories">
+			<div class="categories__list">
+				<CategoriesSectionBg class="categories__list-bg" />
 
-			<CategoryBlock
-				v-for="category in categories"
-				:key="category.title"
-				:data="category"
-				class="categories__item" />
-		</div>
-	</SectionWrapper>
+				<CategoryBlock
+					v-for="category in categories"
+					:key="category.title"
+					:data="category"
+					class="categories__item" />
+			</div>
+		</SectionWrapper>
+	</div>
 </template>
 
 <script lang="ts">

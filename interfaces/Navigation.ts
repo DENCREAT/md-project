@@ -1,6 +1,7 @@
 export interface NavigationItem {
+  id?: symbol,
   title: string;
   url: string,
-  children?: NavigationItem;
+  children?: NavigationItem[];
   forHidden?: boolean;
 }

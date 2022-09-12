@@ -1,19 +1,21 @@
 <template>
-	<SectionWrapper :title="title">
-		<div class="affairs">
-			<div class="affairs__list">
-				<AffairItem
-					v-for="item in affairs"
-					:key="item.title"
-					:data="item"
-					class="affairs__item" />
-			</div>
+	<div>
+		<SectionWrapper :title="title">
+			<div class="affairs">
+				<div class="affairs__list">
+					<AffairItem
+						v-for="item in affairs"
+						:key="item.title"
+						:data="item"
+						class="affairs__item" />
+				</div>
 
-			<ShowAll
-				url="/"
-				title="Смотреть все дела" />
-		</div>
-	</SectionWrapper>
+				<ShowAll
+					url="/"
+					title="Смотреть все дела" />
+			</div>
+		</SectionWrapper>
+	</div>
 </template>
 
 <script>

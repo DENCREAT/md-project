@@ -2,8 +2,8 @@
 	<nav>
 		<ul class="menu">
 			<li
-				v-for="(item, index) in items"
-				:key="index"
+				v-for="item in list"
+				:key="item.id"
 				class="menu__item"
 				:class="{ 'hidden': item.forHidden }">
 				<NuxtLink
@@ -12,106 +12,46 @@
 					{{ item.title }}
 				</NuxtLink>
 
-				<SubMenu
-					:items="item.children"
-					class="menu__submenu" />
+				<transition>
+					<SubMenu
+						:items="item.children"
+						class="menu__submenu" />
+				</transition>
 			</li>
 		</ul>
 	</nav>
 </template>
 
 <script lang="ts">
+import { mapState } from 'pinia';
 import Vue from 'vue';
 
 import SubMenu from '~/components/SubMenu.vue';
 import { NavigationItem } from '~/interfaces';
+import { useNavigationStore } from '~/store/navigation';
 
 export default Vue.extend({
 	name: 'MainMenu',
 	components: { SubMenu },
-	data() {
-		return {
-			items: [
-				{
-					title: 'Главная страница',
-					url: '/',
-				},
-				{
-					title: 'Обо мне',
-					url: '/about-us',
-				},
-				{
-					title: 'Юридические услуги',
-					url: '/services',
-					children: [
-						{
-							title: 'Защита прав автовладельцев',
-							url: '/services',
-							children: [
-								{
-									title: 'Юрист по ДТП',
-									url: '/services',
-								},
-								{
-									title: 'Споры со страховой компанией',
-									url: '/services',
-								},
-								{
-									title: 'Оставление места ДТП',
-									url: '/services',
-								},
-								{
-									title: 'Споры с автосалонами',
-									url: '/services',
-								},
-								{
-									title: 'Оспаривание протолколов',
-									url: '/services',
-								},
-							],
-						},
-						{
-							title: 'Сфера недвижимости',
-							url: '/services',
-						},
-						{
-							title: 'Сфера оказания услуг',
-							url: '/services',
-						},
-						{
-							title: 'Гражданские и иные дела',
-							url: '/services',
-						},
-						{
-							title: 'Семейные правоотношения',
-							url: '/services',
-						},
-						{
-							title: 'Сфера денежных обязательств',
-							url: '/services',
-						},
-					],
-				},
-				{
-					title: 'Успешные дела',
-					url: '/affairs',
-				},
-				{
-					title: 'Про боно',
-					url: '/bono',
-					forHidden: true,
-				},
-				{
-					title: 'Блог',
-					url: '/blog',
-					forHidden: true,
-				},
-				{
-					title: 'Контакты',
-					url: '/contacts',
-				},
-			] as NavigationItem[],
-		};
+	computed: {
+		...mapState(useNavigationStore, ['items']),
+		list(): NavigationItem[] {
+			return this.items.map((item: NavigationItem) => ({
+				...item,
+				id: Symbol('id'),
+				children: item.children?.map((child: NavigationItem) => ({
+					...child,
+					id: Symbol('id'),
+					children: child.children?.map((innerChild: NavigationItem) => ({
+						...innerChild,
+						id: Symbol('id'),
+					})),
+				})),
+			}));
+		},
+	},
+	mounted() {
+		console.log(this.list);
 	},
 });
 </script>
@@ -145,10 +85,12 @@ nav {
 
 	&__submenu {
 		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
 		top: calc(100% + var(--base-indent));
 		left: calc(var(--indent-2) * -1);
-		transform: translateY(-200%);
-		transition: all .52s ease-in-out;
+		transform: translateY(-16px);
+		transition: all .26s ease-in-out;
 	}
 
 	&__item {
@@ -169,8 +111,31 @@ nav {
 
 		&:hover {
 			#{$root}__submenu {
+				pointer-events: all;
+				visibility: visible;
 				opacity: 1;
 				transform: translateY(0);
+			}
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 3px;
+			background-color: transparent;
+			z-index: get-layer(initial);
+			transition: all .26s;
+			transition-timing-function: cubic-bezier(.82,.08,.63,1.05);
+
+			@include size(100%, 0);
+		}
+
+		&:hover {
+			&::after {
+				bottom: 0;
+				height: 3px;
+				background-color: var(--white-color);
 			}
 		}
 	}
@@ -180,26 +145,7 @@ nav {
 		padding-bottom: $menu-indent;
 		text-transform: uppercase;
 		white-space: nowrap;
-
-		&::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			background-color: transparent;
-			z-index: get-layer(initial);
-			transition: all .26s ease-in-out;
-
-			@include size(100%, 0);
-		}
-
-		&.nuxt-link-exact-active,
-		&:hover {
-			&::after {
-				height: 3px;
-				background-color: var(--white-color);
-			}
-		}
+		cursor: pointer;
 	}
 }
 </style>

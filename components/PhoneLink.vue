@@ -2,7 +2,7 @@
 	<a
 		href="tel:89990204000"
 		:class="{ 'phone-link--big': big }"
-		class="phone-link">8 (999) 02-04-000</a>
+		class="phone-link no-wrap">8 (999) 02-04-000</a>
 </template>
 
 <script lang="ts">

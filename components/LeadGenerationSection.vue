@@ -51,6 +51,8 @@ export default Vue.extend({
 @import 'assets/styles/mixins/font';
 @import 'assets/styles/mixins/mq';
 
+$bottom-indent: 60px;
+
 .lead-generation {
 	position: relative;
 	background-color: var(--secondary-color);
@@ -70,12 +72,8 @@ export default Vue.extend({
 		padding: var(--indent-4) 0 var(--indent-5);
 
 		@include mq(large-tablet) {
-			padding: 140px var(--indent-4);
+			padding: (140px - $bottom-indent / 2) var(--indent-4) (140px + $bottom-indent / 2);
 			max-width: 820px;
-		}
-
-		@include mq(desktop) {
-
 		}
 	}
 
@@ -84,7 +82,7 @@ export default Vue.extend({
 		top: 0;
 		right: 0;
 		left: 0;
-		bottom: 60px;
+		bottom: $bottom-indent;
 		background: url('assets/img/lead-generation-bg.png') no-repeat;
 		background-size: cover;
 

@@ -1,9 +1,9 @@
+declare module '*.vue';
 import { Breakpoints } from '~/enums';
 import { BreakpointObserverDevice, DeviceChangeEvent } from '~/types';
 
 declare module 'vue/types/vue' {
     interface Vue {
-        // breakpoint observer mixin
         device: BreakpointObserverDevice,
         currentBreakpoint: Breakpoints,
         onDeviceChange(e: DeviceChangeEvent): void,

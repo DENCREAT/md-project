@@ -16,9 +16,9 @@
 			{{ subtitle }}
 		</div>
 
-		<form class="base-form__control">
+		<div class="base-form__control">
 			<slot />
-		</form>
+		</div>
 	</div>
 </template>
 

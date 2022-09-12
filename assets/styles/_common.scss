@@ -30,10 +30,6 @@ body {
 	margin: 0 auto;
 }
 
-.first-section {
-	margin-top: 180px;
-}
-
 .page-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -42,6 +38,10 @@ body {
 	&__content {
 		flex-grow: 1;
 	}
+}
+
+.no-wrap {
+	white-space: nowrap;
 }
 
 .base-text-control {

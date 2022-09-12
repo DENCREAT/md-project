@@ -10,7 +10,7 @@ import Vue from 'vue';
 import LeadGenerationSection from '~/components/LeadGenerationSection.vue';
 
 export default Vue.extend({
-	name: 'Contacts',
+	name: 'Services',
 	components: { LeadGenerationSection },
 });
 </script>

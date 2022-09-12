@@ -1,15 +1,17 @@
 <template>
-	<SectionWrapper :title="title">
-		<div class="areas">
-			<div class="areas__list">
-				<AreaItem
-					v-for="item in areas"
-					:key="item.title"
-					:data="item"
-					class="areas__item" />
+	<div>
+		<SectionWrapper :title="title">
+			<div class="areas">
+				<div class="areas__list">
+					<AreaItem
+						v-for="item in areas"
+						:key="item.title"
+						:data="item"
+						class="areas__item" />
+				</div>
 			</div>
-		</div>
-	</SectionWrapper>
+		</SectionWrapper>
+	</div>
 </template>
 
 <script>

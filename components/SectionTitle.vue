@@ -4,12 +4,18 @@
 		:class="{
 			'section-title--fluid': fluid,
 			'section-title--center': center,
+			'section-title--self-center': selfCenter,
 			'section-title--uppercase': uppercase,
 			[`section-title--${theme}`]: !!theme,
 			[`section-title--${tag}`]: !!tag,
 		}"
 		class="section-title">
-		<span v-html="title" />
+		<div class="section-title__text">
+			<slot>
+				<span v-html="title" />
+			</slot>
+		</div>
+
 		<div
 			class="section-title__line"
 			:style="lineStyles" />
@@ -28,6 +34,7 @@ export default Vue.extend({
 		title: String,
 		fluid: Boolean,
 		center: Boolean,
+		selfCenter: Boolean,
 		uppercase: {
 			type: Boolean,
 			default: true,
@@ -63,7 +70,7 @@ export default Vue.extend({
 
 .section-title {
 	$root: &;
-	--line-size: initial;
+	--line-size: 3px;
 
 	max-width: 420px;
 
@@ -74,9 +81,11 @@ export default Vue.extend({
 		@include size(100%, #{var(--line-size)});
 	}
 
-	&--h2 {
-		--line-size: 4px;
+	&--h1 {
+		@include font(34);
+	}
 
+	&--h2 {
 		@include font(24, bold);
 
 		@include mq(large-mobile) {
@@ -89,8 +98,6 @@ export default Vue.extend({
 	}
 
 	&--h3 {
-		--line-size: 3px;
-
 		@include font(22, bold);
 	}
 
@@ -104,6 +111,16 @@ export default Vue.extend({
 
 	&--center {
 		text-align: center;
+	}
+
+	&--self-center {
+		margin: 0 auto;
+		max-width: none;
+		width: fit-content;
+
+		#{$root}__text {
+			padding: 0 var(--indent-8);
+		}
 	}
 
 	&--light {

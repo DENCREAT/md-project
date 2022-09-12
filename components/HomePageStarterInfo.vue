@@ -22,10 +22,12 @@
 			<AchievementList class="home-page-starter-info__achievements" />
 		</div>
 
-		<SocialList
-			v-if="!device.isMobile"
-			:vertical="device.isDesktop || device.isLargeDesktop || device.isWide"
-			class="home-page-starter-info__social" />
+		<client-only>
+			<SocialList
+				v-if="!device.isMobile"
+				:vertical="device.isDesktop || device.isLargeDesktop || device.isWide"
+				class="home-page-starter-info__social" />
+		</client-only>
 	</div>
 </template>
 
@@ -73,9 +75,17 @@ export default Vue.extend({
 		padding-bottom: 130px;
 	}
 
+	@include mq(large-tablet) {
+		padding-top: 70px;
+	}
+
 	@include mq(desktop) {
-		padding-top: 150px;
+		padding-top: 110px;
 		padding-bottom: 60px;
+	}
+
+	@include mq(large-desktop) {
+		padding-top: 110px;
 	}
 
 	&__title {

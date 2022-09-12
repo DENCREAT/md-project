@@ -4,7 +4,8 @@
 		class="submenu">
 		<div
 			v-for="item in items"
-			:key="item.title"
+			:key="item.id"
+			:class="{ 'submenu__item--active': activeId === item.id }"
 			class="submenu__item">
 			<NuxtLink
 				:to="item.url"
@@ -12,13 +13,17 @@
 				{{ item.title }}
 			</NuxtLink>
 
-			<i class="submenu__item-arrow icon-arrow-right" />
+			<i
+				v-if="item.children"
+				class="submenu__item-arrow icon-arrow-right"
+				@click="expand(item.id)" />
 
 			<ul
-				v-if="item.children"
+				v-if="item.children && item.id === activeId"
 				class="submenu__inner">
 				<li
 					v-for="child in item.children"
+					:key="child.id"
 					class="submenu__inner-item">
 					<NuxtLink
 						:to="child.url"
@@ -44,6 +49,16 @@ export default Vue.extend({
 			default: () => [],
 		},
 	},
+	data() {
+		return {
+			activeId: '' as symbol | '',
+		};
+	},
+	methods: {
+		expand(activeId: symbol): void {
+			this.activeId = this.activeId === activeId ? '' : activeId;
+		},
+	},
 });
 </script>
 
@@ -53,6 +68,7 @@ export default Vue.extend({
 @import 'assets/styles/mixins/flex';
 
 .submenu {
+	$root: &;
 	$arrow-icon-size: 26px;
 	$item-height: 40px;
 	position: absolute;
@@ -68,19 +84,28 @@ export default Vue.extend({
 		position: absolute;
 		left: 0;
 		right: 0;
-		height: 16px;
+		height: 12px;
 		top: 0;
 		transform: translateY(-100%);
 	}
 
 	&__item {
 		position: relative;
-		//padding: 10px 50px 10px 0;
 		color: var(--menu-item-color);
-		//border-bottom: 1px solid #8890AB;
 		margin-right: calc(20px + #{$arrow-icon-size});
 
 		@include font(12, bold);
+
+		&--active {
+			//#{$root}__inner {
+			//	max-height: 300px;
+			//}
+
+			#{$root}__item-arrow {
+				background-color: var(--secondary-color);
+				transform: rotate(90deg);
+			}
+		}
 	}
 
 	&__item-link {
@@ -115,9 +140,11 @@ export default Vue.extend({
 	}
 
 	&__inner {
+		//max-height: 0px;
 		list-style: none;
 		padding: var(--indent-2) 0;
 		border-bottom: 1px solid #8890AB;
+		transition: max-height .26s ease-in-out;
 	}
 
 	&__inner-item-link {

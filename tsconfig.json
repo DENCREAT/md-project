@@ -1,37 +1,50 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
-    ],
-    "esModuleInterop": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    "strict": true,
-    "noEmit": true,
-    "experimentalDecorators": true,
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./*"],
-      "~/enums": ["./enums"],
-      "~/types": ["./types"],
-      "~/assets": ["./assets/*"],
+    "extends": "./.nuxt/tsconfig.json",
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "lib": [
+            "ESNext",
+            "ESNext.AsyncIterable",
+            "DOM"
+        ],
+        "esModuleInterop": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+        "strict": true,
+        "noEmit": true,
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": [
+                "./*"
+            ],
+            "~/enums": [
+                "./enums"
+            ],
+            "~/types": [
+                "./types"
+            ],
+            "~/assets": [
+                "./assets/*"
+            ],
+            "~/store": [
+                "./store"
+            ]
+        },
+        "types": [
+            "@nuxt/types",
+            "@types/node",
+            "@pinia/nuxt",
+        ],
     },
-    "types": [
-      "@nuxt/types",
-      "@nuxtjs/axios",
-      "@types/node"
+    "exclude": [
+        "node_modules",
+        ".nuxt",
+        "dist",
+//        "index.d.ts"
     ]
-  },
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    "dist"
-  ]
 }

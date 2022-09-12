@@ -1,10 +1,5 @@
 <template>
 	<div>
-		<PageStarter
-			css-class="page-starter--homepage"
-			:bg-from-styles="true">
-			<HomePageStarterInfo />
-		</PageStarter>
 		<AreasSection />
 		<AboutMeSection />
 		<AffairsSection />

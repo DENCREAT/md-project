@@ -1,9 +1,9 @@
 <template>
 	<div
 		class="page-starter"
-		:style="!bgFromStyles && { ...bgStyles }"
-		:class="[cssClass]">
-		<div class="container">
+		:style="!isHomepage && { ...bgStyles }"
+		:class="{ 'page-starter--homepage': isHomepage }">
+		<div class="page-starter__container container">
 			<slot />
 		</div>
 	</div>
@@ -17,11 +17,7 @@ export default {
 			type: String,
 			default: '',
 		},
-		cssClass: {
-			type: String,
-			default: '',
-		},
-		bgFromStyles: {
+		isHomepage: {
 			type: Boolean,
 			default: false,
 		},
@@ -48,9 +44,14 @@ export default {
 .page-starter {
 	background-color: var(--primary-color);
 	padding-top: 128px;
-	min-height: 100vh;
+	height: 490px;
+
+	&__container {
+		height: 100%;
+	}
 
 	&--homepage {
+		min-height: 100vh;
 		background: url(/images/home-page-starter-bg-mobile.jpg);
 		background-size: cover;
 		background-position-y: 20px;
