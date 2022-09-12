@@ -72,7 +72,7 @@ $bottom-indent: 60px;
 		padding: var(--indent-4) 0 var(--indent-5);
 
 		@include mq(large-tablet) {
-			padding: (140px - $bottom-indent / 2) var(--indent-4) (140px + $bottom-indent / 2);
+			padding: calc(140px - #{$bottom-indent} / 2) var(--indent-4) calc(140px + #{$bottom-indent} / 2);
 			max-width: 820px;
 		}
 	}
