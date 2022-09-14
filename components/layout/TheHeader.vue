@@ -6,14 +6,25 @@
 					:variant="logoTypes.GRAY"
 					class="header__logo" />
 
-				<MainMenu class="header__desktop-nav" />
+				<MainMenu
+					v-if="!showMobileMenu"
+					class="header__menu" />
 
 				<div class="header__wrapper-right">
 					<HeaderPhone class="header__phone" />
-					<MobileMenuBtn class="header__burger" />
+					<MobileMenuBtn
+						v-if="showMobileMenu"
+						class="header__burger"
+						@click.native="openMenuMobile" />
 				</div>
 			</div>
 		</div>
+
+		<transition name="slide">
+			<MainMenuMobile
+				v-if="showMobileMenu && isMenuMobileOpen"
+				class="header__menu-mobile" />
+		</transition>
 	</div>
 </template>
 
@@ -23,16 +34,28 @@ import Vue from 'vue';
 import HeaderPhone from '~/components/HeaderPhone.vue';
 import Logo from '~/components/Logo.vue';
 import MainMenu from '~/components/MainMenu.vue';
+import MainMenuMobile from '~/components/MainMenuMobile.vue';
 import MobileMenuBtn from '~/components/MobileMenuBtn.vue';
 import { LogoTypes } from '~/enums';
 
 export default Vue.extend({
 	name: 'TheHeader',
-	components: { MobileMenuBtn, HeaderPhone, Logo, MainMenu },
+	components: { MainMenuMobile, MobileMenuBtn, HeaderPhone, Logo, MainMenu },
 	data() {
 		return {
 			logoTypes: LogoTypes,
+			isMenuMobileOpen: false,
 		};
+	},
+	computed: {
+		showMobileMenu(): boolean {
+			return !(this.device.isDesktop || this.device.isLargeDesktop || this.device.isWide);
+		},
+	},
+	methods: {
+		openMenuMobile(): void {
+			this.isMenuMobileOpen = !this.isMenuMobileOpen;
+		},
 	},
 });
 </script>
@@ -41,6 +64,17 @@ export default Vue.extend({
 @import "assets/styles/mixins/flex";
 @import "assets/styles/mixins/mq";
 @import "assets/styles/mixins/size";
+@import "assets/styles/mixins/get-layer";
+
+.slide-enter-active,
+.slide-leave-active {
+	transition: all .4s cubic-bezier(.44,.24,0,.98);
+}
+
+.slide-enter,
+.slide-leave-to {
+	transform: translateX(-100%);
+}
 
 .header {
 	position: absolute;
@@ -86,7 +120,7 @@ export default Vue.extend({
 		}
 	}
 
-	&__desktop-nav {
+	&__menu {
 		display: none;
 
 		@include mq(desktop) {
@@ -94,15 +128,20 @@ export default Vue.extend({
 		}
 	}
 
+	&__menu-mobile {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: get-layer(menu-mobile);
+
+		@include size(100%);
+	}
+
 	&__burger {
 		cursor: pointer;
 
 		@include flex-center;
 		@include size(33px, 20px);
-
-		@include mq(desktop) {
-			display: none;
-		}
 	}
 
 	&__wrapper-right {

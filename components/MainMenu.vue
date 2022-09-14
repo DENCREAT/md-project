@@ -50,9 +50,6 @@ export default Vue.extend({
 			}));
 		},
 	},
-	mounted() {
-		console.log(this.list);
-	},
 });
 </script>
 <style lang="scss" scoped>
@@ -91,6 +88,7 @@ nav {
 		left: calc(var(--indent-2) * -1);
 		transform: translateY(-16px);
 		transition: all .26s ease-in-out;
+		z-index: get-layer(menu);
 	}
 
 	&__item {

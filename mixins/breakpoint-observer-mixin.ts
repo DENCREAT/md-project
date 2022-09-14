@@ -3,6 +3,7 @@ import mixins from 'vue-typed-mixins';
 
 import { Breakpoints } from '~/enums/Breakpoints';
 import { BREAKPOINTS_CONFIG } from '~/enums/BreakpointsConfig';
+import { BreakpointObserverDevice } from '~/types';
 
 export const breakpointObserverMixin = mixins().extend({
 	data() {
@@ -13,20 +14,23 @@ export const breakpointObserverMixin = mixins().extend({
 		};
 	},
 	computed: {
-		device(): {[key: string]: boolean} {
+		device(): BreakpointObserverDevice {
 			return {
-				isMobile: (this as any).currentBreakpoint === Breakpoints.XS,
-				isTablet: (this as any).currentBreakpoint === Breakpoints.SM,
-				isBigTablet: (this as any).currentBreakpoint === Breakpoints.MD,
-				isDesktop: (this as any).currentBreakpoint === Breakpoints.LG,
-				isLargeDesktop: (this as any).currentBreakpoint === Breakpoints.XL,
-				isWide: (this as any).currentBreakpoint === Breakpoints.XXL,
+				isMobile: this.currentBreakpoint === Breakpoints.XXS,
+				isLargeMobile: this.currentBreakpoint === Breakpoints.XS,
+				isTablet: this.currentBreakpoint === Breakpoints.SM,
+				isLargeTablet: this.currentBreakpoint === Breakpoints.MD,
+				isDesktop: this.currentBreakpoint === Breakpoints.LG,
+				isLargeDesktop: this.currentBreakpoint === Breakpoints.XL,
+				isWide: this.currentBreakpoint === Breakpoints.XXL,
 			};
 		},
 		currentBreakpoint(): Breakpoints {
-			const width = (this as any).currentWindowWidth;
+			const width = this.currentWindowWidth;
 
-			if (width < BREAKPOINTS_CONFIG.sm) return Breakpoints.XS;
+			if (width < BREAKPOINTS_CONFIG.xs) return Breakpoints.XXS;
+
+			if (width >= BREAKPOINTS_CONFIG.xs && width < BREAKPOINTS_CONFIG.sm) return Breakpoints.XS;
 
 			if (width >= BREAKPOINTS_CONFIG.sm && width < BREAKPOINTS_CONFIG.md) return Breakpoints.SM;
 
@@ -36,7 +40,7 @@ export const breakpointObserverMixin = mixins().extend({
 
 			if (width >= BREAKPOINTS_CONFIG.xl && width < BREAKPOINTS_CONFIG.xxl) return Breakpoints.XL;
 
-			return Breakpoints.XL;
+			return Breakpoints.XXL;
 		},
 	},
 	mounted() {
@@ -45,7 +49,7 @@ export const breakpointObserverMixin = mixins().extend({
 	},
 	methods: {
 		onWindowResize(e: Event): void {
-			(this as any).currentWindowWidth = (e.target as Window).innerWidth;
+			this.currentWindowWidth = (e.target as Window).innerWidth;
 		},
 	},
 	destroyed() {

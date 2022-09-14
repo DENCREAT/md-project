@@ -75,7 +75,7 @@ export default Vue.extend({
 	padding: 20px 20px 40px 20px;
 	width: max-content;
 	z-index: get-layer(initial);
-	background: rgba(var(--primary-light-color-rgb), .88);
+	background: rgba(var(--primary-light-color-rgb), .97);
 	border: 1px solid var(--white-color);
 	border-radius: 3px;
 
@@ -97,10 +97,6 @@ export default Vue.extend({
 		@include font(12, bold);
 
 		&--active {
-			//#{$root}__inner {
-			//	max-height: 300px;
-			//}
-
 			#{$root}__item-arrow {
 				background-color: var(--secondary-color);
 				transform: rotate(90deg);

@@ -20,6 +20,7 @@
     "nuxt-svg-loader": "^1.2.0",
     "nuxt-typed-vuex": "^0.3.1",
     "pinia": "^2.0.22",
+    "vue-slick-carousel": "^1.0.6",
     "vue-typed-mixins": "^0.2.0",
     "webpack": "4.46.0"
   },

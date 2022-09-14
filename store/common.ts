@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
 
 interface RootState {
-	counter: number;
+	address: string;
 }
 
 export const useCommonStore = defineStore('common', {
 	state: (): RootState => ({
-		counter: 22,
+		address: '',
 	}),
 });

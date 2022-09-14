@@ -15,9 +15,9 @@ import AboutMeSection from '~/components/AboutMeSection.vue';
 import AffairsSection from '~/components/AffairsSection.vue';
 import AreasSection from '~/components/AreasSection.vue';
 import CategoriesSection from '~/components/CategoriesSection.vue';
-import HomePageStarterInfo from '~/components/HomePageStarterInfo.vue';
 import LeadGenerationSection from '~/components/LeadGenerationSection.vue';
 import PageStarter from '~/components/PageStarter.vue';
+import HomePageStarterInfo from '~/components/PageStarterHomepage.vue';
 
 export default Vue.extend({
 	name: 'Index',

@@ -22,7 +22,11 @@ export default defineNuxtConfig({
 	css: [
 		'@/assets/styles/main.scss',
 	],
-	plugins: ['~/plugins/breakpoint-observer.plugin.ts'],
+	plugins: [
+		'~/plugins/breakpoint-observer.plugin.ts',
+		'~/plugins/slot-utils.plugin.ts',
+		'~/directives/image-dialog.client.ts',
+	],
 	components: true,
 	typescript: {
 		strict: true,

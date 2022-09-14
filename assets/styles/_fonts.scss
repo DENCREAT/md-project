@@ -1,9 +1,11 @@
+$hash: dur7de;
+
 @font-face {
 	font-family: 'md-icons';
 	src:
-		url('assets/fonts/md-icons/md-icons.ttf?1oumov') format('truetype'),
-		url('assets/fonts/md-icons/md-icons.woff?1oumov') format('woff'),
-		url('assets/fonts/md-icons/md-icons.svg?1oumov#md-icons') format('svg');
+		url('assets/fonts/md-icons/md-icons.ttf?#{$hash}') format('truetype'),
+		url('assets/fonts/md-icons/md-icons.woff?#{$hash}') format('woff'),
+		url('assets/fonts/md-icons/md-icons.svg?#{$hash}#md-icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;

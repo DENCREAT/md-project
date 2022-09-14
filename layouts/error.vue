@@ -19,7 +19,7 @@ export default Vue.extend({
 	padding: var(--indent-5);
 
 	&__title {
-		color: var(--white-color);
+		color: var(--primary-text-color);
 	}
 }
 </style>

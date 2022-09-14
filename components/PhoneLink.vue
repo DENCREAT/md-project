@@ -1,17 +1,29 @@
 <template>
 	<a
-		href="tel:89990204000"
-		:class="{ 'phone-link--big': big }"
-		class="phone-link no-wrap">8 (999) 02-04-000</a>
+		:href="`tel:${phone}`"
+		:class="{
+			'phone-link--big': big,
+			'phone-link--inherit': inherit,
+		}"
+		class="phone-link no-wrap">
+		{{ phone }}
+	</a>
 </template>
 
 <script lang="ts">
+import { mapState } from 'pinia';
 import Vue from 'vue';
+
+import { useContactsStore } from '~/store/contacts';
 
 export default Vue.extend({
 	name: 'PhoneLink',
 	props: {
 		big: Boolean,
+		inherit: Boolean,
+	},
+	computed: {
+		...mapState(useContactsStore, ['phone']),
 	},
 });
 </script>
@@ -24,6 +36,13 @@ export default Vue.extend({
 
 	&--big {
 		@include font(18);
+	}
+
+	&--inherit {
+		font-size: inherit;
+		line-height: inherit;
+		color: inherit;
+		font-weight: inherit;
 	}
 }
 </style>

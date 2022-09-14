@@ -10,13 +10,13 @@
 			<slot name="title" />
 		</SectionTitle>
 		<div
-			v-if="hasSlot('subtitle')"
+			v-if="$hasSlot('subtitle')"
 			class="page-starter-info__subtitle">
 			<slot name="subtitle" />
 		</div>
 
 		<div
-			v-if="hasSlot('actions')"
+			v-if="$hasSlot('actions')"
 			class="page-starter-info__actions">
 			<slot name="actions" />
 		</div>
@@ -37,31 +37,32 @@ export default Vue.extend({
 			SectionTheme,
 		};
 	},
-	methods: {
-		hasSlot(name: string): boolean {
-			return !!this.$slots[name];
-		},
-	},
 });
 </script>
 
 <style lang="scss" scoped>
 @import "assets/styles/mixins/flex";
 @import "assets/styles/mixins/font";
+@import "assets/styles/mixins/mq";
 
 .page-starter-info {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: stretch;
 	row-gap: var(--indent-4);
 	height: 100%;
 	color: var(--white-color);
 
-	@include flex-center;
-
 	&__subtitle {
 		max-width: 1080px;
 		text-align: center;
+
 		@include font(16, regular);
+	}
+
+	&__actions {
+		@include flex-h-center;
 	}
 }
 </style>

@@ -1,7 +1,9 @@
 export interface BreakpointObserverDevice {
     isMobile: boolean;
+    isLargeMobile: boolean;
     isTablet: boolean;
+    isLargeTablet: boolean;
     isDesktop: boolean;
     isLargeDesktop: boolean;
-    isBigDesktop: boolean;
+    isWide: boolean;
 }

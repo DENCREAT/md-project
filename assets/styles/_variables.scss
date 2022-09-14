@@ -3,15 +3,27 @@ $base-indent: 8px;
 :root {
   --primary-font: 'Merriweather', serif;
   --primary-color: #2A314B;
+  --primary-color-rgb: 42, 49, 75;
   --primary-light-color: #3F4868;
   --primary-light-color-rgb: 63, 72, 104;
   --secondary-color: #385DF1;
+  --secondary-color-rgb: 56, 93, 241;
   --primary-text-color: #1A2038;
   --bg-light-color: #ECF0FD;
+  --bg-info-section-color: #F4F7FF;
+  --border-info-section-color: #BBC5EC;
   --white-color: #FFFFFF;
+  --black-color: #000000;
+  --black-color-rgb: 0, 0, 0;
   --menu-item-color: #B1B9D9;
   --form-control-border-color: #A4B1E3;
   --form-control-placeholder-color: #8B97C3;
+
+  --default-border-radius: 5px;
+  --default-transition: all .3s ease-in-out;
+  --fast-transition: all .13s ease-in-out;
+
+  --container-width: 1520px;
 
   --fw-light: 300;
   --fw-regular: 400;

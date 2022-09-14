@@ -2,7 +2,10 @@
 	<div
 		class="social"
 		:style="{ gap }"
-		:class="{ 'social--vertical': vertical }">
+		:class="{
+			'social--vertical': vertical,
+			'social--transparent': transparent,
+		}">
 		<a
 			v-for="{ name, url, code } in items"
 			:key="code"
@@ -32,6 +35,7 @@ export default Vue.extend({
 			type: String,
 			default: '10px',
 		},
+		transparent: Boolean,
 	},
 	data() {
 		return {
@@ -68,7 +72,26 @@ export default Vue.extend({
 @import 'assets/styles/mixins/size';
 
 .social {
+	$root: &;
+
 	@include flex-v-center;
+
+	&__link {
+		text-decoration: none;
+		color: var(--white-color);
+		font-size: 12px;
+		cursor: pointer;
+		border-radius: 50%;
+		background-color: #646E8F;
+		transition: var(--fast-transition);
+
+		@include flex-center;
+		@include size(26px);
+
+		&:hover {
+			background-color: var(--secondary-color);
+		}
+	}
 
 	&--vertical {
 		flex-direction: column;
@@ -76,20 +99,16 @@ export default Vue.extend({
 		@include flex-h-center;
 	}
 
-	&__link {
-		text-decoration: none;
-		color: var(--white-color);
-		transition: background-color .13s ease-in-out;
-		font-size: 12px;
-		cursor: pointer;
-		border-radius: 50%;
-		background-color: #646E8F;
+	&--transparent {
+		#{$root}__link {
+			background-color: transparent;
+			font-size: 22px;
+			color: #737EAC;
 
-		@include flex-center;
-		@include size(26px);
-
-		&:hover {
-			background-color: var(--secondary-color);
+			&:hover {
+				color: var(--white-color);
+				background-color: transparent;
+			}
 		}
 	}
 }

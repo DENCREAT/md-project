@@ -17,16 +17,20 @@ a {
 
 body {
 	font-family: var(--primary-font);
-	background: var(--primary-color);
+	background: var(--bg-light-color);
 
 	#__nuxt {
+		overflow: hidden;
+	}
+
+	&.hide-overflow {
 		overflow: hidden;
 	}
 }
 
 .container {
 	padding: 0 var(--indent-2);
-	max-width: 1520px;
+	max-width: var(--container-width);
 	margin: 0 auto;
 }
 
@@ -40,8 +44,40 @@ body {
 	}
 }
 
+.page {
+	&__info {
+		margin: var(--indent-4) 0;
+
+		&--first {
+			margin-top: 0;
+
+			@include mq(desktop) {
+				margin-top: calc(var(--indent-5) * -1);
+			}
+		}
+	}
+
+	&__content {
+		margin: var(--indent-4) auto;
+		color: var(--primary-text-color);
+	}
+}
+
+.text-content {
+	p + p {
+		margin-top: var(--indent-3);
+	}
+}
+
 .no-wrap {
 	white-space: nowrap;
+}
+
+.responsive-image {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
 }
 
 .base-text-control {

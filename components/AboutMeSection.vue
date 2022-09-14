@@ -21,7 +21,9 @@
 						{{ moreBtnText }}
 					</BaseButton>
 
-					<BaseButton class="btn--inverse about-me__contacts-btn">
+					<BaseButton
+						:inverse="true"
+						class="about-me__contacts-btn">
 						{{ contactsBtnText }}
 					</BaseButton>
 				</div>

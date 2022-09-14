@@ -37,13 +37,13 @@ export default Vue.extend({
 		},
 		titleFluid: Boolean,
 		titleCenter: Boolean,
-		noIndents: Boolean,
 	},
 });
 </script>
 
 <style lang="scss" scoped>
 @import "assets/styles/mixins/mq";
+@import "assets/styles/mixins/font";
 
 .section {
 	$root: &;
@@ -78,6 +78,44 @@ export default Vue.extend({
 
 	&--accent {
 		background-color: var(--secondary-color);
+	}
+
+	&--dark {
+		background-color: var(--primary-light-color);
+	}
+
+	&--info {
+		padding: 0;
+
+		#{$root}__container {
+			padding: var(--indent-5) var(--indent-2);
+			row-gap: var(--indent-3);
+			border: 1px solid var(--border-info-section-color);
+			background-color: var(--bg-info-section-color);
+			box-shadow: 0 4px 21px rgba(29, 36, 68, 0.12);
+
+			@include mq(tablet) {
+				row-gap: var(--indent-5);
+			}
+
+			@include mq(desktop) {
+				padding: var(--indent-5) 120px;
+				row-gap: var(--indent-5);
+				max-width: calc(100% - var(--indent-2) * 2);
+			}
+
+			@include mq(large-desktop) {
+				row-gap: var(--indent-5);
+			}
+
+			@include mq(wide) {
+				max-width: calc(var(--container-width) - var(--indent-2) * 2);
+			}
+		}
+
+		#{$root}__content {
+			@include font(18, regular);
+		}
 	}
 }
 </style>

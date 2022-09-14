@@ -82,15 +82,15 @@ export default Vue.extend({
 	}
 
 	&--h1 {
-		@include font(34);
+		@include font(30);
+
+		@include mq(tablet) {
+			@include font(34);
+		}
 	}
 
 	&--h2 {
 		@include font(24, bold);
-
-		@include mq(large-mobile) {
-			@include font(30);
-		}
 
 		@include mq(desktop) {
 			@include font(32);
@@ -119,7 +119,9 @@ export default Vue.extend({
 		width: fit-content;
 
 		#{$root}__text {
-			padding: 0 var(--indent-8);
+			@include mq(tablet) {
+				padding: 0 var(--indent-8);
+			}
 		}
 	}
 
@@ -129,6 +131,10 @@ export default Vue.extend({
 
 	&--accent {
 		@include set-section-title-theme(--white-color, --white-color, $root);
+	}
+
+	&--dark {
+		@include set-section-title-theme(--white-color, --secondary-color, $root);
 	}
 }
 </style>

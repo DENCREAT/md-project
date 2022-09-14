@@ -58,6 +58,7 @@
 </template>
 
 <script lang="ts">
+import { mapState } from 'pinia';
 import Vue from 'vue';
 
 import Logo from '~/components/Logo.vue';
@@ -65,6 +66,7 @@ import PhoneLink from '~/components/PhoneLink.vue';
 import SocialList from '~/components/SocialList.vue';
 import { LogoTypes } from '~/enums';
 import { NavigationItem } from '~/interfaces';
+import { useContactsStore } from '~/store/contacts';
 
 export default Vue.extend({
 	name: 'TheFooter',
@@ -74,7 +76,6 @@ export default Vue.extend({
 			/* eslint-disable max-len */
 			logoTypes: LogoTypes,
 			copyright: '© «MIHAYLOVSKY», 2012 - 2021',
-			address: '191011, г. Санкт-Петербург, Невский проспект, д. 30/канал Грибоедова, д. 16 (Бизнес-центр "Невский 30")',
 			navItems: [
 				{
 					title: 'Главная страница',
@@ -132,6 +133,9 @@ export default Vue.extend({
 				},
 			] as NavigationItem[],
 		};
+	},
+	computed: {
+		...mapState(useContactsStore, ['address']),
 	},
 });
 </script>
