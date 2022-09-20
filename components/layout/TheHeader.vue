@@ -98,7 +98,7 @@ export default Vue.extend({
 	&__menu {
 		display: none;
 
-		@include mq(large-desktop) {
+		@include mq(desktop) {
 			display: block;
 		}
 	}

@@ -3,8 +3,11 @@
 		:title-fluid="true"
 		:title-center="true"
 		:theme="SectionTheme.DARK"
-		title="Сертификаты и награды">
+		title="Сертификаты и награды"
+		class="certificates">
 		<BaseImageCarousel :items="items" />
+
+		<SectionPagination class="certificates__actions" />
 	</SectionWrapper>
 </template>
 
@@ -12,12 +15,13 @@
 import Vue from 'vue';
 
 import BaseImageCarousel from '~/components/base/BaseImageCarousel.vue';
+import SectionPagination from '~/components/SectionPagination.vue';
 import SectionWrapper from '~/components/SectionWrapper.vue';
 import { SectionTheme } from '~/enums';
 
 export default Vue.extend({
 	name: 'CertificatesSection',
-	components: { SectionWrapper, BaseImageCarousel },
+	components: { SectionPagination, SectionWrapper, BaseImageCarousel },
 	data() {
 		return {
 			SectionTheme,
@@ -63,3 +67,11 @@ export default Vue.extend({
 	},
 });
 </script>
+
+<style lang="scss" scoped>
+.certificates {
+	&__actions {
+		margin-top: var(--indent-5);
+	}
+}
+</style>

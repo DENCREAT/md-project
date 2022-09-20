@@ -2,7 +2,7 @@
 	<div
 		class="page-starter"
 		:style="!isFullScreen && { ...bgStyles }"
-		:class="{ 'page-starter--homepage': isFullScreen }">
+		:class="{ 'page-starter--fullscreen': isFullScreen }">
 		<div class="page-starter__container container">
 			<slot />
 
@@ -22,6 +22,7 @@
 import Vue from 'vue';
 
 import SocialList from '~/components/SocialList.vue';
+import { CssRuleset } from '~/types';
 
 export default Vue.extend({
 	name: 'PageStarter',
@@ -42,14 +43,14 @@ export default Vue.extend({
 		};
 	},
 	computed: {
-		bgStyles() {
+		bgStyles(): CssRuleset {
 			return {
-				'background-image': `url(${this.bgImg || this.defaultBg})`,
-				'background-size': 'cover',
+				backgroundImage: `url(${this.bgImg || this.defaultBg})`,
+				backgroundSize: 'cover',
 			};
 		},
 		showSocial(): boolean {
-			return !this.device.isMobile && !this.device.isLargeMobile && !this.device.isTablet;
+			return this.device.isDesktop || this.device.isLargeDesktop || this.device.isWide;
 		},
 	},
 });
@@ -98,17 +99,13 @@ export default Vue.extend({
 			right: var(--indent-2);
 		}
 
-		@include mq(desktop) {
-
-		}
-
 		@include mq(wide) {
 			bottom: 0;
 			top: 0
 		}
 	}
 
-	&--homepage {
+	&--fullscreen {
 		min-height: 100vh;
 		height: auto;
 		background: url(/images/home-page-starter-bg-mobile.jpg);
@@ -172,10 +169,16 @@ export default Vue.extend({
 		}
 
 		#{$root}__social {
-			top: auto;
-			bottom: 0;
+			@include mq(desktop) {
+				top: auto;
+				bottom: var(--indent-4);
+			}
 
-			@include mq(1920px) {
+			@include mq(large-desktop) {
+				bottom: var(--indent-10);
+			}
+
+			@include mq(1920) {
 				right: calc(var(--indent-10) * -1);
 			}
 		}

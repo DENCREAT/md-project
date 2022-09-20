@@ -2,6 +2,8 @@
 	<div
 		v-image-dialog="image.url"
 		class="base-interactive-image">
+		<i class="base-interactive-image__icon icon-plus" />
+
 		<img
 			:src="image.preview || image.url"
 			:alt="image.altText"
@@ -31,6 +33,7 @@ export default Vue.extend({
 $border-size: var(--base-indent);
 
 .base-interactive-image {
+	$root: &;
 	position: relative;
 	height: 305px;
 	border: $border-size solid #A6B0D6;
@@ -41,9 +44,7 @@ $border-size: var(--base-indent);
 
 	@include flex-center;
 
-	&::before {
-		content: '\e90b';
-		font-family: 'md-icons';
+	&__icon {
 		font-size: 20px;
 		color: var(--white-color);
 		position: absolute;
@@ -66,15 +67,11 @@ $border-size: var(--base-indent);
 		transform: scale(1.03);
 		box-shadow: 0 3px 20px rgba(14, 14, 14, 0.3);
 
-		&::before {
+		#{$root}__icon {
 			opacity: 1;
 			font-size: 26px;
 			outline-offset: -24px;
 		}
-	}
-
-	img {
-		object-fit: cover;
 	}
 }
 </style>

@@ -11,7 +11,7 @@
 
 				<div
 					v-if="item.label"
-					class="base-image-carousel__item-text">
+					class="base-image-carousel__text">
 					{{ item.label }}
 				</div>
 			</div>
@@ -109,10 +109,11 @@ export default Vue.extend({
 
 		@include mq(large-tablet) {
 			height: 305px;
+			margin-bottom: var(--base-indent);
 		}
 	}
 
-	&__item-text {
+	&__text {
 		margin-top: var(--indent-5);
 		text-align: center;
 		text-transform: uppercase;

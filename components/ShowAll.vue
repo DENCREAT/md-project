@@ -1,10 +1,10 @@
 <template>
 	<div class="show-all">
-		<nuxt-link
+		<NuxtLink
 			:to="url"
 			class="show-all__link">
 			{{ title }}
-		</nuxt-link>
+		</NuxtLink>
 	</div>
 </template>
 
