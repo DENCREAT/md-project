@@ -45,8 +45,6 @@ export default Vue.extend({
 	},
 	computed: {
 		isVisibleMobileMenu(): boolean {
-			console.log(this.device);
-
 			return !(this.device.isDesktop || this.device.isLargeDesktop || this.device.isWide);
 		},
 	},
