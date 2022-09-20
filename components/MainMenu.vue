@@ -1,7 +1,7 @@
 <template>
 	<nav>
-		<ul class="menu">
-			<li
+		<div class="menu">
+			<div
 				v-for="item in list"
 				:key="item.id"
 				class="menu__item"
@@ -12,13 +12,12 @@
 					{{ item.title }}
 				</NuxtLink>
 
-				<transition>
-					<SubMenu
-						:items="item.children"
-						class="menu__submenu" />
-				</transition>
-			</li>
-		</ul>
+				<SubMenu
+					v-if="item.children"
+					:items="item.children"
+					class="menu__submenu" />
+			</div>
+		</div>
 	</nav>
 </template>
 
@@ -27,28 +26,13 @@ import { mapState } from 'pinia';
 import Vue from 'vue';
 
 import SubMenu from '~/components/SubMenu.vue';
-import { NavigationItem } from '~/interfaces';
 import { useNavigationStore } from '~/store/navigation';
 
 export default Vue.extend({
 	name: 'MainMenu',
 	components: { SubMenu },
 	computed: {
-		...mapState(useNavigationStore, ['items']),
-		list(): NavigationItem[] {
-			return this.items.map((item: NavigationItem) => ({
-				...item,
-				id: Symbol('id'),
-				children: item.children?.map((child: NavigationItem) => ({
-					...child,
-					id: Symbol('id'),
-					children: child.children?.map((innerChild: NavigationItem) => ({
-						...innerChild,
-						id: Symbol('id'),
-					})),
-				})),
-			}));
-		},
+		...mapState(useNavigationStore, ['list']),
 	},
 });
 </script>

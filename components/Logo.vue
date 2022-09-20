@@ -1,7 +1,7 @@
 <template>
 	<!-- eslint-disable max-len	-->
 	<div class="logo">
-		<div v-if="variant === variants.GRAY">
+		<div v-if="variant === LogoTypes.GRAY">
 			<svg
 				class="logo__image"
 				width="331"
@@ -33,7 +33,7 @@
 			</svg>
 		</div>
 
-		<div v-if="variant === variants.BLUE">
+		<div v-if="variant === LogoTypes.BLUE">
 			<svg
 				class="logo__image"
 				width="371"
@@ -49,7 +49,7 @@
 			</svg>
 		</div>
 
-		<div v-if="variant === variants.BIG">
+		<div v-if="variant === LogoTypes.BIG">
 			<svg
 				class="logo__image"
 				width="268"
@@ -68,19 +68,21 @@
 </template>
 
 <script lang="ts">
+import { PropType } from 'vue';
+
 import { LogoTypes } from '~/enums';
 
 export default {
 	name: 'Logo',
 	props: {
 		variant: {
-			validator: (value: string) => Object.values(LogoTypes as any).includes(value),
+			type: String as PropType<LogoTypes>,
 			default: LogoTypes.GRAY,
 		},
 	},
 	data() {
 		return {
-			variants: LogoTypes,
+			LogoTypes,
 		};
 	},
 };

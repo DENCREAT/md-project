@@ -21,6 +21,8 @@
 		<TheFooter />
 
 		<DynamicDialog ref="dialogDynamic" />
+
+		<BaseOverlay />
 	</div>
 </template>
 
@@ -29,6 +31,7 @@ import { mapState } from 'pinia';
 import Vue, { VueConstructor } from 'vue';
 
 import BaseButton from '~/components/base/BaseButton.vue';
+import BaseOverlay from '~/components/base/BaseOverlay.vue';
 import DynamicDialog from '~/components/DynamicDialog.vue';
 import TheFooter from '~/components/layout/TheFooter.vue';
 import TheHeader from '~/components/layout/TheHeader.vue';
@@ -58,6 +61,7 @@ export default (Vue as VueConstructor<
 		PageStarter,
 		TheHeader,
 		TheFooter,
+		BaseOverlay,
 	},
 	computed: {
 		...mapState(usePageStore, ['title', 'description', 'cta']),
@@ -72,6 +76,7 @@ export default (Vue as VueConstructor<
 			}
 		},
 	},
+
 	mounted() {
 		dialogDynamicService.init(this.$refs.dialogDynamic);
 	},

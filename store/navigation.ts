@@ -1,13 +1,17 @@
 import { defineStore } from 'pinia';
 
 import { NavigationItem } from '~/interfaces';
+import { useOverlayStore } from '~/store/overlay';
+import { forbidScroll } from '~/utils';
 
 interface NavigationState {
 	items: NavigationItem[];
+	isMobileMenuActive: boolean;
 }
 
 export const useNavigationStore = defineStore('navigation', {
 	state: (): NavigationState => ({
+		isMobileMenuActive: false,
 		items: [
 			{
 				title: 'Главная страница',
@@ -50,6 +54,29 @@ export const useNavigationStore = defineStore('navigation', {
 					{
 						title: 'Сфера недвижимости',
 						url: '/services',
+						children: [
+							{
+								title: 'Юрист по ДТП',
+								url: '/services',
+							},
+							{
+								title: 'Споры со страховой компанией',
+								url: '/services',
+							},
+							{
+								title: 'Оставление места ДТП',
+								url: '/services',
+							},
+							{
+								title: 'Споры с автосалонами',
+								url: '/services',
+							},
+							{
+								title: 'Оспаривание протолколов',
+								url: '/services',
+							},
+						],
+
 					},
 					{
 						title: 'Сфера оказания услуг',
@@ -89,4 +116,29 @@ export const useNavigationStore = defineStore('navigation', {
 			},
 		],
 	}),
+	getters: {
+		list(state): NavigationItem[] {
+			return addIdToMenuItem(state.items);
+		},
+	},
+	actions: {
+		showMobileMenu(preventCircular = false): void {
+			this.isMobileMenuActive = true;
+			forbidScroll(true);
+			!preventCircular && useOverlayStore().showOverlay();
+		},
+		hideMobileMenu(preventCircular = false): void {
+			this.isMobileMenuActive = false;
+			forbidScroll(false);
+			!preventCircular && useOverlayStore().hideOverlay();
+		},
+	},
 });
+
+function addIdToMenuItem(data: NavigationItem[]): NavigationItem[] {
+	return data.map((child: NavigationItem) => ({
+		...child,
+		id: Symbol('id'),
+		...(child.children && { children: addIdToMenuItem(child.children) }),
+	}));
+}

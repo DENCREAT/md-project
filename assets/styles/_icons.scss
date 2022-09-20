@@ -13,6 +13,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-close:before {
+	content: "\e90c";
+}
 .icon-plus:before {
 	content: "\e90b";
 }

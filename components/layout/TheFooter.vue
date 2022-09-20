@@ -2,7 +2,7 @@
 	<div class="footer">
 		<div class="container footer__inner">
 			<div class="footer__column footer__column--logo">
-				<Logo :variant="logoTypes.BIG" />
+				<Logo :variant="LogoTypes.BIG" />
 			</div>
 
 			<div class="footer__column footer__column--main-nav">
@@ -73,8 +73,7 @@ export default Vue.extend({
 	components: { SocialList, PhoneLink, Logo },
 	data() {
 		return {
-			/* eslint-disable max-len */
-			logoTypes: LogoTypes,
+			LogoTypes,
 			copyright: '© «MIHAYLOVSKY», 2012 - 2021',
 			navItems: [
 				{

@@ -1,6 +1,7 @@
 <template>
 	<div
 		v-if="items.length"
+		:class="{ 'submenu--mobile': mobile }"
 		class="submenu">
 		<div
 			v-for="item in items"
@@ -9,15 +10,14 @@
 			class="submenu__item">
 			<NuxtLink
 				:to="item.url"
-				class="submenu__item-link">
+				class="submenu__link">
 				{{ item.title }}
 			</NuxtLink>
 
-			<i
+			<MenuArrowIcon
 				v-if="item.children"
-				class="submenu__item-arrow icon-arrow-right"
-				@click="expand(item.id)" />
-
+				class="submenu__arrow"
+				@click.native="expand(item.id)" />
 			<ul
 				v-if="item.children && item.id === activeId"
 				class="submenu__inner">
@@ -39,15 +39,18 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 
+import MenuArrowIcon from '~/components/MenuArrowIcon.vue';
 import { NavigationItem } from '~/interfaces';
 
 export default Vue.extend({
 	name: 'SubMenu',
+	components: { MenuArrowIcon },
 	props: {
 		items: {
 			type: Array as PropType<NavigationItem[]>,
 			default: () => [],
 		},
+		mobile: Boolean,
 	},
 	data() {
 		return {
@@ -71,6 +74,7 @@ export default Vue.extend({
 	$root: &;
 	$arrow-icon-size: 26px;
 	$item-height: 40px;
+
 	position: absolute;
 	padding: 20px 20px 40px 20px;
 	width: max-content;
@@ -97,14 +101,14 @@ export default Vue.extend({
 		@include font(12, bold);
 
 		&--active {
-			#{$root}__item-arrow {
+			#{$root}__arrow {
 				background-color: var(--secondary-color);
 				transform: rotate(90deg);
 			}
 		}
 	}
 
-	&__item-link {
+	&__link {
 		display: block;
 		color: inherit;
 		padding: 10px 50px 10px 0;
@@ -116,27 +120,13 @@ export default Vue.extend({
 		}
 	}
 
-	&__item-arrow {
+	&__arrow {
 		position: absolute;
 		left: calc(100% + 20px);
 		top: calc((#{$item-height} - #{$arrow-icon-size}) / 2);
-		background-color: #646D8D;
-		border-radius: 50%;
-		color: var(--white-color);
-		font-size: 10px;
-		cursor: pointer;
-		transition: background-color .26s ease-in-out;
-
-		@include size($arrow-icon-size);
-		@include flex-center;
-
-		&:hover {
-			background-color: var(--secondary-color);
-		}
 	}
 
 	&__inner {
-		//max-height: 0px;
 		list-style: none;
 		padding: var(--indent-2) 0;
 		border-bottom: 1px solid #8890AB;
@@ -156,6 +146,47 @@ export default Vue.extend({
 			margin-right: var(--base-indent);
 
 			@include size(0);
+		}
+	}
+
+	&--mobile {
+		position: relative;
+		padding: 0 var(--indent-2);
+		width: 100%;
+		border: none;
+		background-color: #525C81;
+
+		&::before {
+			content: none;
+		}
+
+		#{$root}__item {
+			color: var(--white-color);
+			margin: 0;
+
+			@include font(16, bold);
+		}
+
+		#{$root}__link {
+			padding: 12px 0;
+			border: none;
+		}
+
+		#{$root}__arrow {
+			left: auto;
+			right: 0;
+		}
+
+		#{$root}__inner {
+			background-color: var(--secondary-color);
+			border: none;
+			margin: 0 -16px;
+			padding: 16px;
+		}
+
+		#{$root}__inner-item-link {
+			padding: 6px 0;
+			@include font(14);
 		}
 	}
 }

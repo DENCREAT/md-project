@@ -208,7 +208,7 @@ export default (Vue as VueConstructor<Vue & {
 @import 'assets/styles/mixins/mq';
 @import 'assets/styles/mixins/get-layer';
 
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
 	opacity: 0;
 
 	.dialog__container {
@@ -218,7 +218,6 @@ export default (Vue as VueConstructor<Vue & {
 
 .dialog {
 	$root: &;
-	$overlay-blur: 4px;
 	$default-width-large-tablet: 800px;
 	$default-width-desktop: 840px;
 
@@ -232,7 +231,7 @@ export default (Vue as VueConstructor<Vue & {
 		padding: var(--indent-2);
 		background-color: rgba(var(--black-color-rgb), .5);
 		transition: opacity .3s ease;
-		backdrop-filter: blur($overlay-blur);
+		backdrop-filter: blur(var(--overlay-blur));
 		z-index: get-layer(dialog);
 		transform: translate3d(0, 0, 0);
 

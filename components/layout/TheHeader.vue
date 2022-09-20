@@ -1,34 +1,30 @@
 <template>
-	<div class="header">
+	<header class="header">
 		<div class="container">
 			<div class="header__inner">
 				<Logo
-					:variant="logoTypes.GRAY"
+					:variant="LogoTypes.GRAY"
 					class="header__logo" />
 
-				<MainMenu
-					v-if="!showMobileMenu"
-					class="header__menu" />
+				<MainMenu class="header__menu" />
 
 				<div class="header__wrapper-right">
 					<HeaderPhone class="header__phone" />
+
 					<MobileMenuBtn
-						v-if="showMobileMenu"
+						v-if="isVisibleMobileMenu"
 						class="header__burger"
-						@click.native="openMenuMobile" />
+						@click.native="showMobileMenu()" />
 				</div>
 			</div>
 		</div>
 
-		<transition name="slide">
-			<MainMenuMobile
-				v-if="showMobileMenu && isMenuMobileOpen"
-				class="header__menu-mobile" />
-		</transition>
-	</div>
+		<MainMenuMobile v-if="isVisibleMobileMenu" />
+	</header>
 </template>
 
 <script lang="ts">
+import { mapActions } from 'pinia';
 import Vue from 'vue';
 
 import HeaderPhone from '~/components/HeaderPhone.vue';
@@ -37,25 +33,25 @@ import MainMenu from '~/components/MainMenu.vue';
 import MainMenuMobile from '~/components/MainMenuMobile.vue';
 import MobileMenuBtn from '~/components/MobileMenuBtn.vue';
 import { LogoTypes } from '~/enums';
+import { useNavigationStore } from '~/store/navigation';
 
 export default Vue.extend({
 	name: 'TheHeader',
-	components: { MainMenuMobile, MobileMenuBtn, HeaderPhone, Logo, MainMenu },
+	components: { MobileMenuBtn, HeaderPhone, Logo, MainMenu, MainMenuMobile },
 	data() {
 		return {
-			logoTypes: LogoTypes,
-			isMenuMobileOpen: false,
+			LogoTypes,
 		};
 	},
 	computed: {
-		showMobileMenu(): boolean {
+		isVisibleMobileMenu(): boolean {
+			console.log(this.device);
+
 			return !(this.device.isDesktop || this.device.isLargeDesktop || this.device.isWide);
 		},
 	},
 	methods: {
-		openMenuMobile(): void {
-			this.isMenuMobileOpen = !this.isMenuMobileOpen;
-		},
+		...mapActions(useNavigationStore, ['showMobileMenu']),
 	},
 });
 </script>
@@ -65,16 +61,6 @@ export default Vue.extend({
 @import "assets/styles/mixins/mq";
 @import "assets/styles/mixins/size";
 @import "assets/styles/mixins/get-layer";
-
-.slide-enter-active,
-.slide-leave-active {
-	transition: all .4s cubic-bezier(.44,.24,0,.98);
-}
-
-.slide-enter,
-.slide-leave-to {
-	transform: translateX(-100%);
-}
 
 .header {
 	position: absolute;
@@ -111,6 +97,14 @@ export default Vue.extend({
 		margin-right: 30px;
 	}
 
+	&__menu {
+		display: none;
+
+		@include mq(large-desktop) {
+			display: block;
+		}
+	}
+
 	&__phone {
 		margin-left: 30px;
 		display: none;
@@ -120,28 +114,15 @@ export default Vue.extend({
 		}
 	}
 
-	&__menu {
-		display: none;
-
-		@include mq(desktop) {
-			display: block;
-		}
-	}
-
-	&__menu-mobile {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: get-layer(menu-mobile);
-
-		@include size(100%);
-	}
-
 	&__burger {
 		cursor: pointer;
 
 		@include flex-center;
 		@include size(33px, 20px);
+
+		@include mq(large-desktop) {
+			display: none;
+		}
 	}
 
 	&__wrapper-right {
