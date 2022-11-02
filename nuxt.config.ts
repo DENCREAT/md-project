@@ -26,7 +26,9 @@ export default defineNuxtConfig({
 		'~/plugins/breakpoint-observer.plugin.ts',
 		'~/plugins/slot-utils.plugin.ts',
 		'~/directives/image-dialog.client.ts',
+		'~/plugins/pinia.plugin.ts',
 	],
+	router: { middleware: ['nuxt-server-init'] },
 	components: true,
 	typescript: {
 		strict: true,
@@ -35,8 +37,12 @@ export default defineNuxtConfig({
 		// https://go.nuxtjs.dev/axios
 		'nuxt-svg-loader',
 		'nuxt-typed-vuex',
-		'@pinia/nuxt',
+		['@pinia/nuxt', { disableVuex: false }],
+		'@nuxtjs/axios',
 	],
+	axios: {
+		baseUrl: process.env.API_URL,
+	},
 	build: {
 		transpile: [
 			'/plugins',

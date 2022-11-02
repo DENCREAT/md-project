@@ -1,6 +1,6 @@
 <template>
 	<div class="page page-contacts">
-		<InfoSection class="page__info page__info--first">
+		<InfoSection>
 			<ContactsSection />
 		</InfoSection>
 

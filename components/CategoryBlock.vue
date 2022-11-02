@@ -9,34 +9,36 @@
 				:tag="TitleTag.H3"
 				:theme="SectionTheme.ACCENT"
 				:uppercase="false"
-				:title="data.title" />
+				:title="data.name" />
 		</div>
 
 		<div class="category__content">
-			<ul class="category__list">
-				<li
-					v-for="item in data.items"
-					:key="item"
+			<div class="category__list">
+				<NuxtLink
+					v-for="(item, index ) in data.children"
+					:key="item.ID + index"
+					:to="item.url"
 					class="category__list-item">
-					{{ item }}
-				</li>
-			</ul>
+					{{ item.post_title }}
+				</NuxtLink>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropType } from 'vue';
 
 import SectionTitle from '~/components/SectionTitle.vue';
 import { SectionTheme, TitleTag } from '~/enums';
+import { NavigationItem } from '~/interfaces';
 
 export default Vue.extend({
 	name: 'CategoryBlock',
 	components: { SectionTitle },
 	props: {
 		data: {
-			type: Object,
+			type: Object as PropType<NavigationItem>,
 			required: true,
 		},
 	},
@@ -52,6 +54,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 @import "assets/styles/mixins/font";
 @import "assets/styles/mixins/size";
+@import "assets/styles/mixins/flex";
 
 .category {
 	display: flex;
@@ -73,14 +76,8 @@ export default Vue.extend({
 		@include font(22, bold);
 	}
 
-	&__list {
-		list-style: none;
-	}
-
 	&__list-item {
-		display: flex;
-		align-items: center;
-
+		@include flex-v-center;
 		@include font(14, medium, 2);
 
 		&::before {

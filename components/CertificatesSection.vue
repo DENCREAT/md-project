@@ -5,21 +5,31 @@
 		:theme="SectionTheme.DARK"
 		title="Сертификаты и награды"
 		class="certificates">
-		<BaseImageCarousel :items="items" />
+		<BaseImageCarousel
+			ref="certificatesCarousel"
+			:items="items" />
 
-		<SectionPagination class="certificates__actions" />
+		<SectionPagination
+			class="certificates__actions"
+			@next="onNext"
+			@prev="onPrev" />
 	</SectionWrapper>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 
 import BaseImageCarousel from '~/components/base/BaseImageCarousel.vue';
 import SectionPagination from '~/components/SectionPagination.vue';
 import SectionWrapper from '~/components/SectionWrapper.vue';
 import { SectionTheme } from '~/enums';
+import { BaseImageCarouselInstance } from '~/types';
 
-export default Vue.extend({
+export default (Vue as VueConstructor<Vue & {
+	$refs: {
+		certificatesCarousel: BaseImageCarouselInstance,
+	}
+}>).extend({
 	name: 'CertificatesSection',
 	components: { SectionPagination, SectionWrapper, BaseImageCarousel },
 	data() {
@@ -64,6 +74,14 @@ export default Vue.extend({
 				},
 			],
 		};
+	},
+	methods: {
+		onNext(): void {
+			this.$refs.certificatesCarousel.next();
+		},
+		onPrev(): void {
+			this.$refs.certificatesCarousel.prev();
+		},
 	},
 });
 </script>

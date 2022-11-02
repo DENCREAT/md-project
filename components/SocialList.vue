@@ -7,22 +7,24 @@
 			'social--transparent': transparent,
 		}">
 		<a
-			v-for="{ name, url, code } in items"
-			:key="code"
+			v-for="{ title, url, id, classes } in socialList"
+			:key="id"
 			:href="url"
 			:target="Target.BLANK"
-			:aria-label="name"
-			:title="name"
+			:aria-label="title"
+			:title="title"
 			class="social__link">
-			<i :class="`icon-${code}`" />
+			<i :class="classes" />
 		</a>
 	</div>
 </template>
 
 <script lang="ts">
+import { mapState } from 'pinia';
 import Vue from 'vue';
 
 import { Target } from '~/enums';
+import { useNavigationStore } from '~/store/navigation';
 
 export default Vue.extend({
 	name: 'SocialList',
@@ -40,29 +42,10 @@ export default Vue.extend({
 	data() {
 		return {
 			Target,
-			items: [
-				{
-					name: 'Telegram',
-					code: 'telegram',
-					url: 'https://t.me/Mikhailovskyspb',
-				},
-				{
-					name: 'WhatsApp',
-					code: 'whatsapp',
-					url: 'https://wa.me/79990204000',
-				},
-				{
-					name: 'Instagram',
-					code: 'instagram',
-					url: 'https://www.instagram.com/advocat_mihailovski',
-				},
-				{
-					name: 'Facebook',
-					code: 'facebook',
-					url: 'https://www.facebook.com/profile.php?id=100078006937422',
-				},
-			],
 		};
+	},
+	computed: {
+		...mapState(useNavigationStore, ['socialList']),
 	},
 });
 </script>

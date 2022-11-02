@@ -64,9 +64,6 @@ export default Vue.extend({
 			return this.isLocalActive;
 		},
 	},
-	mounted() {
-		console.log(this.data);
-	},
 	methods: {
 		toggle(e: MouseEvent, hasChildren: boolean): void {
 			if (hasChildren) e.preventDefault();

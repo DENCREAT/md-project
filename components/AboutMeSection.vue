@@ -13,7 +13,7 @@
 				</div>
 
 				<div
-					class="about-me__text"
+					class="about-me__text text-content"
 					v-html="text" />
 
 				<div class="about-me__buttons about-me__buttons--desktop">
@@ -188,9 +188,9 @@ export default Vue.extend({
 	}
 
 	&__text {
-		&::v-deep p {
-			display: block;
-			margin-bottom: 30px;
+		margin-bottom: var(--indent-3);
+
+		&::v-deep(p) {
 			text-align: center;
 
 			@include font(18, regular);

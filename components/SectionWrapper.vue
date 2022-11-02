@@ -86,6 +86,7 @@ export default Vue.extend({
 
 	&--info {
 		padding: 0;
+		margin: var(--indent-4) 0;
 
 		#{$root}__container {
 			padding: var(--indent-5) var(--indent-2);

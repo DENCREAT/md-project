@@ -7,8 +7,8 @@
 		</div>
 
 		<div class="area-item__footer">
-			<BaseButton class="btn--transparent area-item__btn">
-				Узнать больше
+			<BaseButton :transparent="true">
+				{{ learnMore }}
 			</BaseButton>
 
 			<i class="area-item__icon">
@@ -21,7 +21,10 @@
 </template>
 
 <script lang="ts">
+import { mapState } from 'pinia';
+
 import BaseButton from '~/components/base/BaseButton.vue';
+import { useStaticStore } from '~/store/static';
 
 export default {
 	name: 'AreaItem',
@@ -31,6 +34,9 @@ export default {
 			type: Object,
 			default: () => ({}),
 		},
+	},
+	computed: {
+		...mapState(useStaticStore, ['learnMore']),
 	},
 };
 </script>
@@ -48,10 +54,10 @@ export default {
 
 	display: flex;
 	flex-direction: column;
-	padding: calc(var(--indent-2) * 2);
+	padding: var(--indent-4);
 	color: var(--white-color);
 	background-size: cover;
-	transition: box-shadow .13s ease;
+	transition: var(--fast-transition);
 
 	&:hover {
 		box-shadow: inset 0 0 0 5px var(--secondary-color);
@@ -86,37 +92,10 @@ export default {
 	}
 
 	&__footer {
-		column-gap: 5%;
+		column-gap: 15%;
 		justify-content: space-between;
 
 		@include flex-v-center;
-
-		@include mq(tablet) {
-			column-gap: 17%;
-		}
-	}
-
-	&__btn {
-		flex-grow: 1;
-		padding: 0 30px;
-
-		@include mq(large-mobile) {
-			max-width: 230px;
-		}
-
-		@include mq(tablet, true) {
-			#{$root}::v-deep & {
-				height: 48px;
-			}
-		}
-
-		@include mq(tablet) {
-			padding: 0 40px;
-		}
-
-		&:hover {
-			box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-		}
 	}
 }
 </style>

@@ -66,17 +66,16 @@ export default (Vue as VueConstructor<
 	computed: {
 		...mapState(usePageStore, ['title', 'description', 'cta']),
 		isFullScreen(): boolean {
-			return this.$route.path === '/' || this.$route.path === '/about-us';
+			return this.$route.path === '/' || this.$route.path === '/about-us/';
 		},
 		dynamicPageStarter(): string {
 			switch (this.$route.path) {
 				case '/': return 'HomePageStarterInfo';
-				case '/about-us': return 'PageStarterAboutMe';
+				case '/about-us/': return 'PageStarterAboutMe';
 				default: return '';
 			}
 		},
 	},
-
 	mounted() {
 		dialogDynamicService.init(this.$refs.dialogDynamic);
 	},

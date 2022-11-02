@@ -1,7 +1,12 @@
 <template>
 	<div class="section-pagination">
-		<i class="section-pagination__arrow section-pagination__arrow--prev icon-arrow-left" />
-		<i class="section-pagination__arrow section-pagination__arrow--next icon-arrow-right" />
+		<i
+			class="section-pagination__arrow section-pagination__arrow--prev icon-arrow-left"
+			@click="$emit('prev')" />
+
+		<i
+			class="section-pagination__arrow section-pagination__arrow--next icon-arrow-right"
+			@click="$emit('next')" />
 	</div>
 </template>
 

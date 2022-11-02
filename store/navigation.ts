@@ -1,127 +1,28 @@
 import { defineStore } from 'pinia';
 
+import { WHITELIST_NAVIGATION_KEYS } from '~/constants';
 import { NavigationItem } from '~/interfaces';
 import { useOverlayStore } from '~/store/overlay';
-import { forbidScroll } from '~/utils';
+import { forbidScroll, pickKeysFromObjectArray } from '~/utils';
 
 interface NavigationState {
-	items: NavigationItem[];
 	isMobileMenuActive: boolean;
+	navigation: NavigationItem[];
+	navigationTree: NavigationItem[];
+	socialList: NavigationItem[];
 }
 
 export const useNavigationStore = defineStore('navigation', {
 	state: (): NavigationState => ({
 		isMobileMenuActive: false,
-		items: [
-			{
-				title: 'Главная страница',
-				url: '/',
-			},
-			{
-				title: 'Обо мне',
-				url: '/about-us',
-			},
-			{
-				title: 'Юридические услуги',
-				url: '/services',
-				children: [
-					{
-						title: 'Защита прав автовладельцев',
-						url: '/services',
-						children: [
-							{
-								title: 'Юрист по ДТП',
-								url: '/services',
-							},
-							{
-								title: 'Споры со страховой компанией',
-								url: '/services',
-							},
-							{
-								title: 'Оставление места ДТП',
-								url: '/services',
-							},
-							{
-								title: 'Споры с автосалонами',
-								url: '/services',
-							},
-							{
-								title: 'Оспаривание протолколов',
-								url: '/services',
-							},
-						],
-					},
-					{
-						title: 'Сфера недвижимости',
-						url: '/services',
-						children: [
-							{
-								title: 'Юрист по ДТП',
-								url: '/services',
-							},
-							{
-								title: 'Споры со страховой компанией',
-								url: '/services',
-							},
-							{
-								title: 'Оставление места ДТП',
-								url: '/services',
-							},
-							{
-								title: 'Споры с автосалонами',
-								url: '/services',
-							},
-							{
-								title: 'Оспаривание протолколов',
-								url: '/services',
-							},
-						],
-
-					},
-					{
-						title: 'Сфера оказания услуг',
-						url: '/services',
-					},
-					{
-						title: 'Гражданские и иные дела',
-						url: '/services',
-					},
-					{
-						title: 'Семейные правоотношения',
-						url: '/services',
-					},
-					{
-						title: 'Сфера денежных обязательств',
-						url: '/services',
-					},
-				],
-			},
-			{
-				title: 'Успешные дела',
-				url: '/affairs',
-			},
-			{
-				title: 'Про боно',
-				url: '/bono',
-				forHidden: true,
-			},
-			{
-				title: 'Блог',
-				url: '/blog',
-				forHidden: true,
-			},
-			{
-				title: 'Контакты',
-				url: '/contacts',
-			},
-		],
+		navigation: [],
+		navigationTree: [],
+		socialList: [],
 	}),
-	getters: {
-		list(state): NavigationItem[] {
-			return addIdToMenuItem(state.items);
-		},
-	},
 	actions: {
+		async nuxtServerInit() {
+			await this.loadNavigation();
+		},
 		showMobileMenu(preventCircular = false): void {
 			this.isMobileMenuActive = true;
 			forbidScroll(true);
@@ -132,13 +33,13 @@ export const useNavigationStore = defineStore('navigation', {
 			forbidScroll(false);
 			!preventCircular && useOverlayStore().hideOverlay();
 		},
+		async loadNavigation() {
+			const { data } = await this.$axios.get('navigation');
+			const { navigation, navigationTree, social } = data;
+
+			this.navigation = pickKeysFromObjectArray(navigation, WHITELIST_NAVIGATION_KEYS);
+			this.navigationTree = navigationTree;
+			this.socialList = pickKeysFromObjectArray(social, WHITELIST_NAVIGATION_KEYS);
+		},
 	},
 });
-
-function addIdToMenuItem(data: NavigationItem[]): NavigationItem[] {
-	return data.map((child: NavigationItem) => ({
-		...child,
-		id: Symbol('id'),
-		...(child.children && { children: addIdToMenuItem(child.children) }),
-	}));
-}

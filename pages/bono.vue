@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="page page-contacts">
 		<LeadGenerationSection />
 	</div>
 </template>
@@ -10,7 +10,7 @@ import Vue from 'vue';
 import LeadGenerationSection from '~/components/LeadGenerationSection.vue';
 
 export default Vue.extend({
-	name: 'Services',
+	name: 'Bono',
 	components: { LeadGenerationSection },
 });
 </script>

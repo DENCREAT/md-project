@@ -1,15 +1,43 @@
 import { defineStore } from 'pinia';
 
+import { API_URLS } from '~/api';
+import { PageType } from '~/enums';
+import { Page } from '~/interfaces';
+import { tPickKeys } from '~/utils/pickKeys';
+
 interface PageState {
-    title?: string;
-    description?: string;
-	cta?: boolean;
+	page: Page;
+	categories: any[];
 }
 
 export const usePageStore = defineStore('page', {
 	state: (): PageState => ({
-		title: 'Контактная информация',
-		// description: 'Заказчик и подрядчик нередко оказываются в ситуации, когда неспособны прийти к соглашению самостоятельно. В этом случае спор решается в Арбитражном суде, где каждую из сторон конфликта представляет адвокат. Поэтому разумным и дальновидным решением будет подобрать юриста, специализирующегося на решении спорных вопросов в строительной сфере и имеющего успешный практический опыт ведения такого рода дел.',
-		// cta: true,
+		categories: [],
+		page: {} as Page,
 	}),
+	actions: {
+		async loadPage(id: string, type: PageType) {
+			const url = getApiUrlType(type);
+			const { data } = await this.$axios.get(`${url}${id}`);
+
+			console.log(data);
+
+			this.page = tPickKeys<Page>(data, Page);
+		},
+		async loadCategories() {
+			if (this.categories.length) return;
+
+			const { data } = await this.$axios.get(API_URLS.categoriesTree);
+
+			this.categories = data;
+		},
+	},
 });
+
+function getApiUrlType(type: PageType) {
+	if (type === PageType.PAGE) return API_URLS.pages;
+
+	if (type === PageType.POST) return API_URLS.posts;
+
+	if (type === PageType.CATEGORY) return API_URLS.categories;
+}

@@ -4,6 +4,7 @@
 		:class="{
 			'base-button--fluid': fluid,
 			'base-button--inverse': inverse,
+			'base-button--transparent': transparent,
 		}">
 		<slot>
 			{{ text }}
@@ -19,6 +20,7 @@ export default Vue.extend({
 	props: {
 		fluid: Boolean,
 		inverse: Boolean,
+		transparent: Boolean,
 		text: String,
 	},
 });

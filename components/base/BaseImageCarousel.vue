@@ -1,6 +1,8 @@
 <template>
 	<div class="base-image-carousel">
-		<VueSlickCarousel v-bind="settings">
+		<VueSlickCarousel
+			ref="carousel"
+			v-bind="settings">
 			<div
 				v-for="item in items"
 				:key="item.image.preview"
@@ -22,13 +24,17 @@
 <script lang="ts">
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 
-import Vue, { PropType } from 'vue';
+import Vue, { PropType, VueConstructor } from 'vue';
 import VueSlickCarousel from 'vue-slick-carousel';
 
 import BaseInteractiveImage from '~/components/base/BaseInteractiveImage.vue';
 import { VueSlickSettings } from '~/interfaces';
 
-export default Vue.extend({
+export default (Vue as VueConstructor<Vue & {
+	$refs: {
+		carousel: InstanceType<typeof VueSlickCarousel>,
+	}
+}>).extend({
 	name: 'BaseImageCarousel',
 	components: { BaseInteractiveImage, VueSlickCarousel },
 	props: {
@@ -79,6 +85,14 @@ export default Vue.extend({
 			} as VueSlickSettings,
 		};
 	},
+	methods: {
+		next(): void {
+			this.$refs.carousel.next();
+		},
+		prev(): void {
+			this.$refs.carousel.prev();
+		},
+	},
 });
 </script>
 
@@ -121,16 +135,16 @@ export default Vue.extend({
 		@include font(20, bold);
 	}
 
-	::v-deep .slick-track {
+	::v-deep(.slick-track) {
 		display: flex;
 		margin-top: var(--base-indent);
 	}
 
-	::v-deep .slick-list {
+	::v-deep(.slick-list) {
 		margin: 0 -#{$gap};
 	}
 
-	::v-deep .slick-slide {
+	::v-deep(.slick-slide) {
 		margin: 0 $gap;
 	}
 }

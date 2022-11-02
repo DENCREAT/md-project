@@ -1,20 +1,20 @@
 <template>
-	<SectionWrapper
-		:theme="SectionTheme.INFO">
+	<SectionWrapper>
 		<template
-			v-if="$hasSlot('title') || title"
+			v-if="title"
 			#title>
 			<SectionTitle
 				:uppercase="false"
-				:self-center="true"
 				tag="h3">
-				<slot name="title">
-					{{ title }}
-				</slot>
+				{{ title }}
 			</SectionTitle>
 		</template>
 
-		<slot />
+		<div class="text-content">
+			<slot>
+				<div v-html="text" />
+			</slot>
+		</div>
 	</SectionWrapper>
 </template>
 
@@ -23,21 +23,17 @@ import Vue from 'vue';
 
 import SectionTitle from '~/components/SectionTitle.vue';
 import SectionWrapper from '~/components/SectionWrapper.vue';
-import { SectionTheme } from '~/enums';
 
 export default Vue.extend({
-	name: 'InfoSection',
+	name: 'TextSection',
 	components: { SectionWrapper, SectionTitle },
 	props: {
 		title: String,
-	},
-	data() {
-		return {
-			SectionTheme,
-		};
+		text: String,
 	},
 });
 </script>
 
 <style lang="scss" scoped>
+
 </style>

@@ -45,15 +45,12 @@ body {
 }
 
 .page {
-	&__info {
-		margin: var(--indent-4) 0;
 
-		&--first {
-			margin-top: 0;
+	*:first-child:is(.section--info) {
+		margin-top: 0;
 
-			@include mq(desktop) {
-				margin-top: calc(var(--indent-5) * -1);
-			}
+		@include mq(desktop) {
+			margin-top: calc(var(--indent-5) * -1);
 		}
 	}
 
@@ -67,6 +64,51 @@ body {
 	p + p {
 		margin-top: var(--indent-3);
 	}
+
+	ul {
+		list-style-position: inside;
+		margin-bottom: var(--indent-3);
+	}
+}
+
+.quote {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--indent-5);
+	padding: var(--indent-7) var(--indent-2);
+	background: var(--secondary-color);
+	color: var(--white-color);
+	font-style: italic;
+	text-align: center;
+	border-radius: 20px;
+
+	@include font(14, bold);
+
+	&::after {
+		content: url('/images/shield.svg');
+		font-size: 0;
+	}
+
+	@include mq(tablet) {
+		padding: var(--indent-7) var(--indent-9);
+
+		@include font(18);
+	}
+
+	@include mq(large-tablet) {
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row;
+		column-gap: var(--indent-5);
+	}
+
+	& + * {
+		margin-top: var(--indent-7);
+	}
+}
+
+* + .quote {
+	margin-top: var(--indent-7);
 }
 
 .no-wrap {

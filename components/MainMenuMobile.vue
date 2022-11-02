@@ -8,7 +8,7 @@
 				@click="hideMobileMenu()" />
 
 			<MenuItem
-				v-for="item in list"
+				v-for="item in navigationTree"
 				:key="item.id"
 				:data="item" />
 		</nav>
@@ -27,7 +27,7 @@ export default Vue.extend({
 	name: 'MainMenuMobile',
 	components: { MenuItem },
 	computed: {
-		...mapState(useNavigationStore, ['list', 'isMobileMenuActive']),
+		...mapState(useNavigationStore, ['navigationTree', 'isMobileMenuActive']),
 	},
 	mounted() {
 		useOverlayStore().$onAction(({ name }) => {

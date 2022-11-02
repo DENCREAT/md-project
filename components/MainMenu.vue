@@ -2,12 +2,12 @@
 	<nav>
 		<div class="menu">
 			<div
-				v-for="item in list"
+				v-for="item in navigationTree"
 				:key="item.id"
 				class="menu__item"
 				:class="{ 'hidden': item.forHidden }">
 				<NuxtLink
-					:to="item.url"
+					:to="{ path: item.url }"
 					class="menu__item-link">
 					{{ item.title }}
 				</NuxtLink>
@@ -32,7 +32,7 @@ export default Vue.extend({
 	name: 'MainMenu',
 	components: { SubMenu },
 	computed: {
-		...mapState(useNavigationStore, ['list']),
+		...mapState(useNavigationStore, ['navigationTree']),
 	},
 });
 </script>
